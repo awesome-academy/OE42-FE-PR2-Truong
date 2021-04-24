@@ -1,0 +1,68 @@
+@import "../../assets/style/vars"
+@import "../../assets/style/common"
+
+%arrow-button
+    position: absolute
+    top: 0
+    bottom: 0
+    display: flex
+    align-items: center
+    i.fa
+        font-size: 2rem
+        font-weight: bold
+        cursor: pointer
+
+section.slider
+    position: relative
+    .left-arrow
+        @extend %arrow-button
+        left: -1.5rem
+    .right-arrow
+        @extend %arrow-button
+        right: -1.5rem
+    .slider-container
+        overflow: hidden
+        .slider-group
+            display: flex
+            transition-duration: 1s
+            .slider-item
+                position: relative
+                min-width: 100%
+                padding: 0 0.3rem
+                @media screen and ( $sm )
+                    min-width: 50%
+                @media screen and ( $md )
+                    min-width: 25%
+                @media screen and ( $lg )
+                    min-width: 20%
+                img
+                    width: 100%
+                .action
+                    position: absolute
+                    top: 0
+                    bottom: 0
+                    left: 0.3rem
+                    right: 0.3rem
+                    background-color: rgba(0, 0, 0, 0.5)
+                    visibility: hidden
+                    opacity: 0
+                    transition-duration: 0.3s
+                    @extend %flex-center
+                    flex-direction: column
+                    button
+                        cursor: pointer
+                        width: 80%
+                        background-color: transparent
+                        color: $color-orange
+                        border: 1px solid $color-orange
+                        margin: 0.5rem 0
+                        transition-duration: 0.2s
+                        &:hover
+                            background-color: $color-orange
+                            color: white
+                        &:focus
+                            outline: none
+                &:hover
+                    .action
+                        visibility: visible
+                        opacity: 1

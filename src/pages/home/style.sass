@@ -1,0 +1,154 @@
+@import "../../assets/style/vars"
+@import "../../assets/style/common"
+
+.responsive-container
+    padding: 3rem 3rem
+    section.main-slide
+        display: none
+        padding: 0
+    @media screen and ( $sm )
+        section.main-slide
+            display: block
+    @media screen and ( $lg )
+        padding: 3rem 10rem
+        section.main-slide
+            padding: 0 5rem
+    @media screen and ( $lg )
+        padding: 3rem 5rem
+    @media screen and ( $xxl )
+        padding: 3rem 15rem
+        section.main-slide
+            padding: 0
+    .main-title
+        text-align: center
+        font-size: 1.2rem
+        font-weight: bold
+        margin: 3rem 0 1rem 0
+    section.promotion-container
+        display: grid
+        grid-template-columns: repeat(1, 1fr)
+        grid-gap: 1rem
+        padding: 0 0.3rem
+        @media screen and ( $sm )
+            grid-template-columns: repeat(2, 1fr)
+        @media screen and ( $md )
+            grid-template-columns: repeat(3, 1fr)
+        @media screen and ( $lg )
+            grid-template-columns: repeat(4, 1fr)
+        article.promotion-item
+            position: relative
+            overflow: hidden
+            img
+                width: 100%
+            .info
+                visibility: hidden
+                @extend %absolute-zero
+                background-color: rgba(0, 0, 0, 0.5)
+                padding: 0.8rem
+                color: white
+                display: flex
+                flex-direction: column
+                transition-duration: 0.3s
+                opacity: 0
+                h5
+                    @include limit-row(2)
+                    text-transform: uppercase
+                    font-size: 1rem
+                    min-height: 2rem
+                p
+                    @include limit-row(8)
+                    font-size: 0.9rem
+                span
+                    display: inline-block
+                    justify-self: flex-end
+                    width: fit-content
+                    margin-top: auto
+                    margin-left: auto
+                    margin-right: auto
+                    border: 1px solid white
+                    transition-duration: 0.3s
+                    padding: 0.3rem 1.5rem
+                    @include link-style(white, white)
+                    &:hover, &:active
+                        color: white
+                        border: 1px solid orange
+                        background-color: orange
+            &:hover
+                .info
+                    opacity: 1
+                    visibility: visible
+    section.news-container
+        display: grid
+        grid-template-columns: repeat(1, 1fr)
+        grid-column-gap: 0.5rem
+        margin: 1rem 0
+        @media screen and ( $md )
+            grid-template-columns: repeat(2, 1fr)
+        a
+            font-size: 1.2rem
+            display: inline-block
+            color: black
+            transition-duration: 0.3s
+            &:hover,&:active
+                color: orange
+                text-decoration: none
+            &[class~="news-title"]
+                margin: 1rem 0
+                border-bottom: 2px solid orange
+        section.review-container
+            article.news-item
+                .info
+                    p
+                        @include limit-row(3)
+        section.blog-container
+            article.news-item
+                .info
+                    p
+                        @include limit-row(5)
+        section.review-container, section.blog-container
+            article.news-item
+                display: grid
+                grid-template-columns: repeat(1, 1fr)
+                grid-column-gap: 0.8rem
+                margin-bottom: 1rem
+                @media screen and ( $sm )
+                    grid-template-columns: repeat(2, 1fr)
+                .img-container
+                    a.img-link
+                        position: relative
+                        img
+                            width: 100%
+                        .icon
+                            @extend %flex-center
+                            @extend %absolute-zero
+                            transition-duration: 0.3s
+                            opacity: 0
+                            background: linear-gradient(to bottom right, transparent 50%, rgba(0, 0, 0, 0.3) 50%)
+                            i.fa
+                                transition-duration: 0.3s
+                                transform: rotateZ(0)
+                                color: black
+                                background-color: white
+                                @extend %flex-center
+                                width: 2rem
+                                height: 2rem
+                                border-radius: 2rem
+                        &:hover
+                            .icon
+                                opacity: 1
+                                i.fa
+                                    transform: rotateZ(180deg)
+                .info
+                    a
+                        h5
+                            font-size: 1rem
+                            font-weight: normal
+                            @include limit-row(2)
+                            margin: 0
+                    .rating
+                        margin: 0.2rem 0
+                        i.fa
+                            color: orange
+                    p
+                        font-size: 0.8rem
+                        color: $light-grey-text

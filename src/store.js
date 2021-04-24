@@ -3,10 +3,21 @@ import watcherSaga from "./sagas";
 import { logger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import { combineReducers } from "redux";
+import filmReducer from "./reducers/film";
+import bannerReducer from "./reducers/banner";
+import promotionReducer from "./reducers/promotion";
+import reviewReducer from "./reducers/review";
+import blogReducer from "./reducers/blog";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  banner: bannerReducer,
+  film: filmReducer,
+  promotion: promotionReducer,
+  review: reviewReducer,
+  blog: blogReducer,
+});
 
 const store = configureStore({
   reducer,
