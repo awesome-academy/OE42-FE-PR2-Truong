@@ -41,6 +41,22 @@ export const authSlice = createSlice({
       state.pending = false;
       state.error = action.payload;
     },
+    postSignUp: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    postSignUpSuccess: (state, action) => {
+      const { user, token } = action.payload;
+      localStorage.setItem("token", token);
+      state.user = user;
+      state.token = token;
+      state.pending = false;
+      state.error = null;
+    },
+    postSignUpFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
     logout: (state) => {
       localStorage.removeItem("token");
       state.user = {};
@@ -56,6 +72,9 @@ export const {
   getUserInfo,
   getUserInfoSuccess,
   getUserInfoFailed,
+  postSignUp,
+  postSignUpSuccess,
+  postSignUpFailed,
   logout,
 } = authSlice.actions;
 
