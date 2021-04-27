@@ -5,12 +5,16 @@ import createSagaMiddleware from "redux-saga";
 import { combineReducers } from "redux";
 import bannerReducer from "./reducers/banner";
 import promotionReducer from "./reducers/promotion";
+import reviewReducer from "./reducers/review";
+import blogReducer from "./reducers/blog";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = combineReducers({
   banner: bannerReducer,
   promotion: promotionReducer,
+  review: reviewReducer,
+  blog: blogReducer,
 });
 
 const store = configureStore({

@@ -6,6 +6,8 @@ import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { getBanners } from "../../reducers/banner";
 import { getPromotions } from "../../reducers/promotion";
+import { getReviewNewses } from "../../reducers/review";
+import { getBlogNewses } from "../../reducers/blog";
 import PendingSpinner from "../../components/pending-spinner";
 import { Link } from "react-router-dom";
 import * as routePath from "../../constants/routes";
@@ -21,10 +23,18 @@ function HomePage(props) {
   const { promotions, pending: pendingPromotions } = useSelector(
     (state) => state.promotion
   );
+  const { reviewNewses, pending: pendingReviewNewses } = useSelector(
+    (state) => state.review
+  );
+  const { blogNewses, pending: pendingBlogNewses } = useSelector(
+    (state) => state.blog
+  );
 
   useEffect(() => {
     dispatch(getBanners());
     dispatch(getPromotions({ page: 1, limit: 8 }));
+    dispatch(getReviewNewses({ page: 1, limit: 4 }));
+    dispatch(getBlogNewses({ page: 1, limit: 4 }));
   }, [dispatch]);
 
   return (
@@ -86,17 +96,69 @@ function HomePage(props) {
               <Link to={routePath.REVIEW_PAGE_PATH} className="news-title">
                 {t("common.list_title.review")}
               </Link>
+              {reviewNewses.length &&
+                reviewNewses.map((review) => (
+                  <article className="news-item" key={review.id}>
+                    <div className="img-container">
+                      <Link
+                        to={routePath.REVIEW_PAGE_PATH + "/" + review.id}
+                        className="img-link"
+                      >
+                        <img src={review.img} alt="" />
+                        <div className="icon">
+                          <i className="fa fa-link"></i>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="info">
+                      <Link to={routePath.REVIEW_PAGE_PATH + "/" + review.id}>
+                        <h5>{`[Review] ${review.movie?.name}: ${review.title}`}</h5>
+                      </Link>
+                      <div className="rating">
+                        <i className="fa fa-star"></i>&nbsp;
+                        <b>{review.movie?.ratingAverage}</b>
+                        <span>/10 ({review.movie?.ratingQuantity})</span>
+                      </div>
+                      <p>{review.summary}</p>
+                    </div>
+                  </article>
+                ))}
             </section>
             <section className="blog-container">
               <Link to={routePath.BLOG_PAGE_PATH} className="news-title">
                 {t("common.list_title.blog")}
               </Link>
+              {blogNewses.length &&
+                blogNewses.map((blog) => (
+                  <article className="news-item" key={blog.id}>
+                    <div className="img-container">
+                      <Link
+                        to={routePath.BLOG_PAGE_PATH + "/" + blog.id}
+                        className="img-link"
+                      >
+                        <img src={blog.img} alt="" />
+                        <div className="icon">
+                          <i className="fa fa-link"></i>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="info">
+                      <Link to={routePath.BLOG_PAGE_PATH + "/" + blog.id}>
+                        <h5>{blog.title}</h5>
+                      </Link>
+                      <p>{blog.summary}</p>
+                    </div>
+                  </article>
+                ))}
             </section>
           </section>
         </main>
         <Footer />
       </div>
-      {(pendingBanners || pendingPromotions) && <PendingSpinner />}
+      {(pendingBanners ||
+        pendingPromotions ||
+        pendingReviewNewses ||
+        pendingBlogNewses) && <PendingSpinner />}
     </div>
   );
 }

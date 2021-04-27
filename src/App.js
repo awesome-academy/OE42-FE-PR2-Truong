@@ -5,6 +5,7 @@ import "./style.sass";
 import * as routePath from "./constants/routes";
 import HomePage from "./pages/home";
 import PromotionPage from "./pages/promotion";
+import NewsPage from "./pages/news";
 
 function App(props) {
   return (
@@ -16,6 +17,8 @@ function App(props) {
             path={routePath.PROMOTION_PAGE_PATH}
             component={PromotionPage}
           />
+          <Route path={routePath.REVIEW_PAGE_PATH} component={NewsPage} />
+          <Route path={routePath.BLOG_PAGE_PATH} component={NewsPage} />
         </Switch>
       </div>
     </Router>
