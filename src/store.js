@@ -3,10 +3,13 @@ import watcherSaga from "./sagas";
 import { logger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import { combineReducers } from "redux";
+import bannerReducer from "./reducers/banner";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  banner: bannerReducer,
+});
 
 const store = configureStore({
   reducer,

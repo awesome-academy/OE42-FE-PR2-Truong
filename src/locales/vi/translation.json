@@ -1,0 +1,58 @@
+{
+    "common": {
+        "list_title": {
+            "playing_movie": "Phim đang chiếu",
+            "ongoing_movie": "Phim sắp chiếu",
+            "promotion": "Khuyến mãi",
+            "review": "Bình luận phim",
+            "blog": "Blog điện ảnh",
+            "movie_content": "Nội dung phim"
+        },
+        "button_title": {
+            "detail": "Chi tiết",
+            "order_ticket": "Đặt vé",
+            "evaluate": "Đánh giá"
+        }
+    },
+    "unit": {
+        "minute": "phút",
+        "minutes": "phút"
+    },
+    "error": {
+        "not_found_film": "Không tìm thấy phim nào tương ứng với "
+    },
+    "movie_title": {
+        "category": "Thể loại",
+        "nation": "Quốc gia",
+        "producer": "Nhà sản xuất",
+        "director": "Đạo diễn",
+        "actors": "Diễn viên",
+        "published_date": "Ngày phát hành"
+    },
+    "header": {
+        "top_header": {
+            "search_placeholder": "Nhập tên phim...",
+            "login": "Đăng nhập",
+            "register": "Đăng ký",
+            "logout": "Đăng xuất",
+            "personal_account": "Tài khoản cá nhân",
+            "member_card": "Thẻ thành viên",
+            "support": "Hỗ trợ khách hàng"
+        },
+        "bottom_header": {
+            "gift_shop": "Shop quà tặng",
+            "buy_ticket": "Mua vé",
+            "movie": "Phim",
+            "cinema": "Rạp chiếu phim",
+            "promotion": "Khuyến mãi"
+        }
+    },
+    "footer": {
+        "company": "Công ty TNHH Lotte Cinema Việt Nam",
+        "address_name": "Địa chỉ",
+        "address_value": "Tầng 3, TTTM Lotte, số 469 đường Nguyễn Hữu Thọ, Phường Tân Hưng, Quận 7, TPHCM, Việt Nam",
+        "hotline": "Hotline",
+        "copyright_name": "Bản quyền",
+        "copyright_value": "Đã đăng ký bản quyền đầy đủ"
+    }
+}
