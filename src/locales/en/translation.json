@@ -1,0 +1,58 @@
+{
+    "common": {
+        "list_title": {
+            "playing_movie": "Playing Movies",
+            "ongoing_movie": "Ongoing Movies",
+            "promotion": "Promotions",
+            "review": "Movie Reviews",
+            "blog": "Blogs",
+            "movie_content": "Movie Content"
+        },
+        "button_title": {
+            "detail": "Detail",
+            "order_ticket": "Order ticket",
+            "evaluate": "Evaluate"
+        }
+    },
+    "unit": {
+        "minute": "minute",
+        "minutes": "minutes"
+    },
+    "error": {
+        "not_found_film": "Not found any film with name is "
+    },
+    "movie_title": {
+        "category": "Category",
+        "nation": "Nation",
+        "producer": "Producer",
+        "director": "Director",
+        "actors": "Actors",
+        "published_date": "Published date"
+    },
+    "header": {
+        "top_header": {
+            "search_placeholder": "Enter movie name...",
+            "login": "Login",
+            "register": "Register",
+            "logout": "Logout",
+            "personal_account": "Personal account",
+            "member_card": "Member card",
+            "support": "Support"
+        },
+        "bottom_header": {
+            "gift_shop": "Gift Shop",
+            "buy_ticket": "Buy Ticket",
+            "movie": "Movies",
+            "cinema": "Cinema",
+            "promotion": "Promotion"
+        }
+    },
+    "footer": {
+        "company": "Lotte Cinema Vietnam joint stock company",
+        "address_name": "Address",
+        "address_value": "Floor 3, Lotte Shopping Mall, 469 Nguyen Huu Tho Street, Tan Hung Ward, 7 District, HCM City, Vietname",
+        "hotline": "Hotline",
+        "copyright_name": "Copyright",
+        "copyright_value": "All rights reserved"
+    }
+}
