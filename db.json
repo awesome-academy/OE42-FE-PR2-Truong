@@ -925,5 +925,27 @@
                 "<p>Cũng chính vì điều này mà đạo diễn James Cameron đã quyết định bỏ kịch bản và lựa chọn tình huống phát sinh bất ngờ để dựng thành phim.</p>"
             ]
         }
+    ],
+    "accounts": [
+        {
+            "id": 1,
+            "username": "truongpro",
+            "password": "123456",
+            "token": "secret-token",
+            "fullname": "Nguyễn Đình Trường",
+            "email": "truong@email.com",
+            "phone": "0123517123",
+            "role": "user"
+        },
+        {
+            "id": 2,
+            "username": "tuanle",
+            "password": "123456",
+            "token": "secret-token",
+            "fullname": "Lê Anh Tuấn",
+            "email": "tuan@email.com",
+            "phone": "01236713124",
+            "role": "admin"
+        }
     ]
 }

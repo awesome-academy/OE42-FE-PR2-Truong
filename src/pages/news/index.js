@@ -1,20 +1,29 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import "./style.sass";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, useRouteMatch, useLocation } from "react-router-dom";
 import AdditionalFilmList from "../../components/additional-film-list";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import PendingSpinner from "../../components/pending-spinner";
+import { getPlayingHottestMovies } from "../../reducers/film";
 import NewsDetail from "./news-detail";
 import NewsList from "./news-list";
 
 function NewsPage(props) {
   const { path } = useRouteMatch();
+  const dispatch = useDispatch();
+  const { playingMovies, pendingPlayingMovies: pendingMovies } = useSelector(
+    (state) => state.film
+  );
   const { pending: pendingReview } = useSelector((state) => state.review);
   const { pending: pendingBlog } = useSelector((state) => state.blog);
 
   const location = useLocation();
+
+  useEffect(() => {
+    dispatch(getPlayingHottestMovies({ limit: 3 }));
+  }, [dispatch]);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -34,16 +43,17 @@ function NewsPage(props) {
             </Route>
           </Switch>
           <section className="sub-content-container">
-            <AdditionalFilmList movies={[]} />
+            <AdditionalFilmList movies={playingMovies} />
           </section>
         </main>
         <Footer />
       </div>
-      {(path === "/review"
-        ? pendingReview
-        : path === "/blog"
-        ? pendingBlog
-        : true) && <PendingSpinner />}
+      {(pendingMovies ||
+        (path === "/review"
+          ? pendingReview
+          : path === "/blog"
+          ? pendingBlog
+          : true)) && <PendingSpinner />}
     </div>
   );
 }
