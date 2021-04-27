@@ -1,8 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./style.sass";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import * as routePath from "../../constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../reducers/auth";
 
 function Header(props) {
   const [language, setLanguage] = useState("vi");
@@ -13,7 +15,10 @@ function Header(props) {
   const [showBottomButton, setShowBottomButton] = useState(false);
 
   const history = useHistory();
+  const location = useLocation();
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setLanguage(localStorage.getItem("i18nextLng"));
@@ -47,6 +52,12 @@ function Header(props) {
     } else {
       setShowBottomMenu(!showBottomMenu);
     }
+  };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    history.push("/");
   };
 
   const handleSearch = (e) => {
@@ -85,12 +96,31 @@ function Header(props) {
                 </button>
               </form>
             </li>
-            <li>
-              <Link to="/login">{t("header.top_header.login")}</Link>
-            </li>
-            <li>
-              <Link to="/register">{t("header.top_header.register")}</Link>
-            </li>
+            {token ? (
+              <>
+                <li>
+                  <Link to="/personal-account">
+                    {t("header.top_header.personal_account")}
+                  </Link>
+                </li>
+                <li>
+                  <a href="/" onClick={handleLogout}>
+                    {t("header.top_header.logout")}
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to={{ pathname: "/login", state: { from: location } }}>
+                    {t("header.top_header.login")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register">{t("header.top_header.register")}</Link>
+                </li>
+              </>
+            )}
             <li>
               <Link to="/member-card">
                 {t("header.top_header.member_card")}

@@ -6,20 +6,56 @@
             "promotion": "Khuyến mãi",
             "review": "Bình luận phim",
             "blog": "Blog điện ảnh",
-            "movie_content": "Nội dung phim"
+            "movie_content": "Nội dung phim",
+            "login_title": "Đăng nhập",
+            "login_now": "Đăng nhập ngay",
+            "register_title": "Đăng ký",
+            "register_now": "Đăng ký ngay",
+            "not_have_account": "Chưa có tài khoản?",
+            "have_account": "Đã có tài khoản?",
+            "accept_policy": "Tôi đã đọc và đồng ý với chính sách của chương trình."
         },
         "button_title": {
             "detail": "Chi tiết",
             "order_ticket": "Đặt vé",
-            "evaluate": "Đánh giá"
+            "evaluate": "Đánh giá",
+            "login": "Đăng nhập",
+            "register": "Đăng ký"
         }
     },
     "unit": {
         "minute": "phút",
         "minutes": "phút"
     },
+    "validation_error": {
+        "username": {
+            "not_start_with_alpha_character": "Username phải bắt đầu bằng ký tự chữ cái hoặc dấu _.",
+            "contain_special_character": "Username không được chứa ký tự đặc biệt.",
+            "too_short": "Username phải có ít nhất 5 ký tự.",
+            "too_long": "Username không được vượt quá 20 ký tự.",
+            "null": "Username không được để trống."
+        },
+        "password": {
+            "too_short": "Mật khẩu phải có ít nhất 5 ký tự.",
+            "too_long": "Mật khẩu không được vượt quá 20 ký tự.",
+            "null": "Mật khẩu không được để trống.",
+            "confirm": "Vui lòng xác thực lại mật khẩu!"
+        },
+        "fullname_null": "Họ tên không được để trống",
+        "address_null": "Địa chỉ không được để trống"
+    },
     "error": {
-        "not_found_film": "Không tìm thấy phim nào tương ứng với "
+        "not_found_film": "Không tìm thấy phim nào tương ứng với ",
+        "not_found_page": "Xin lỗi, trang web bạn đang tìm kiếm không tồn tại!",
+        "login_failed": "Tài khoản hoặc mật khẩu không đúng!"
+    },
+    "placeholder": {
+        "username": "Username",
+        "password": "Mật khẩu",
+        "confirm_password": "Xác nhận mât khẩu",
+        "dob": "Ngày sinh",
+        "full_name": "Họ và tên",
+        "address": "Địa chỉ"
     },
     "movie_title": {
         "category": "Thể loại",

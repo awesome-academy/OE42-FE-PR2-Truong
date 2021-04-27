@@ -933,18 +933,14 @@
             "password": "123456",
             "token": "secret-token",
             "fullname": "Nguyễn Đình Trường",
-            "email": "truong@email.com",
-            "phone": "0123517123",
             "role": "user"
         },
         {
             "id": 2,
             "username": "tuanle",
             "password": "123456",
-            "token": "secret-token",
+            "token": "secret-token-2",
             "fullname": "Lê Anh Tuấn",
-            "email": "tuan@email.com",
-            "phone": "01236713124",
             "role": "admin"
         }
     ]

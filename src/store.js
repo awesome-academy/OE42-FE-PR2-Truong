@@ -8,6 +8,7 @@ import promotionReducer from "./reducers/promotion";
 import reviewReducer from "./reducers/review";
 import blogReducer from "./reducers/blog";
 import filmReducer from "./reducers/film";
+import authReducer from "./reducers/auth";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   review: reviewReducer,
   blog: blogReducer,
   film: filmReducer,
+  auth: authReducer,
 });
 
 const store = configureStore({

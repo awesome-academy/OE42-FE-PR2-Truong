@@ -5,3 +5,4 @@ export const API_MOVIE = "/movies";
 export const API_PROMOTION = "/promotions";
 export const API_REVIEW_NEWS = "/reviewNewses";
 export const API_BLOG_NEWS = "/blogNewses";
+export const API_AUTH = "/accounts";
