@@ -28,7 +28,7 @@ function PromotionList(props) {
     <section className="list-promotion-container">
       <div className="promotion-title">{t("common.list_title.promotion")}</div>
       <div className="promotion-item-container">
-        {promotions &&
+        {promotions.length &&
           promotions.map((promotion) => (
             <Link
               to={routePath.PROMOTION_PAGE_PATH + "/" + promotion.id}
