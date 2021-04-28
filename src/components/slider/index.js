@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import * as routePath from "../../constants/routes";
 import { useTranslation } from "react-i18next";
 
-function Slider(props) {
+function Slider({ data }) {
   const [pageQuantity, setPageQuantity] = useState(0);
   const [page, setPage] = useState(1);
 
@@ -15,7 +15,7 @@ function Slider(props) {
     const resizeWindow = () => {
       const { innerWidth: width } = window;
       let totalPage;
-      const totalItems = props.data.length;
+      const totalItems = data.length;
       if (width < 576) {
         totalPage = totalItems;
       } else if (width < 768) {
@@ -34,7 +34,7 @@ function Slider(props) {
     return () => {
       window.removeEventListener("resize", resizeWindow);
     };
-  }, [pageQuantity, props.data]);
+  }, [pageQuantity, data]);
 
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -68,8 +68,8 @@ function Slider(props) {
       )}
       <div className="slider-container">
         <div className="slider-group" ref={sliderRef}>
-          {props.data &&
-            props.data.map((film) => (
+          {data.length &&
+            data.map((film) => (
               <article className="slider-item" key={film.id}>
                 <img src={film.img} alt={film.name} />
                 <div className="action">
