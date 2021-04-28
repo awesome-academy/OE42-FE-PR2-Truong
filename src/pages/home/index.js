@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { getBanners } from "../../reducers/banner";
+import { getPromotions } from "../../reducers/promotion";
 import PendingSpinner from "../../components/pending-spinner";
 import { Link } from "react-router-dom";
 import * as routePath from "../../constants/routes";
@@ -17,9 +18,13 @@ function HomePage(props) {
   const { banners, pending: pendingBanners } = useSelector(
     (state) => state.banner
   );
+  const { promotions, pending: pendingPromotions } = useSelector(
+    (state) => state.promotion
+  );
 
   useEffect(() => {
     dispatch(getBanners());
+    dispatch(getPromotions({ page: 1, limit: 8 }));
   }, [dispatch]);
 
   return (
@@ -32,7 +37,7 @@ function HomePage(props) {
               activeIndex={index}
               onSelect={(selectedIndex) => setIndex(selectedIndex)}
             >
-              {banners &&
+              {banners.length &&
                 banners.map((banner) => (
                   <Carousel.Item key={banner.id}>
                     <img
@@ -58,6 +63,24 @@ function HomePage(props) {
               {t("common.list_title.promotion")}
             </Link>
           </div>
+          <section className="promotion-container">
+            {promotions.length &&
+              promotions.map((promotion) => (
+                <Link
+                  to={routePath.PROMOTION_PAGE_PATH + "/" + promotion.id}
+                  key={promotion.id}
+                >
+                  <article className="promotion-item">
+                    <img src={promotion.img} alt={promotion.title} />
+                    <div className="info">
+                      <h5>{promotion.title}</h5>
+                      <p>{promotion.description}</p>
+                      <span>{t("common.button_title.detail")}</span>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+          </section>
           <section className="news-container">
             <section className="review-container">
               <Link to={routePath.REVIEW_PAGE_PATH} className="news-title">
@@ -73,7 +96,7 @@ function HomePage(props) {
         </main>
         <Footer />
       </div>
-      {pendingBanners && <PendingSpinner />}
+      {(pendingBanners || pendingPromotions) && <PendingSpinner />}
     </div>
   );
 }

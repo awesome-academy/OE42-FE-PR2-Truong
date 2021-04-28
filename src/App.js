@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.sass";
 import * as routePath from "./constants/routes";
 import HomePage from "./pages/home";
+import PromotionPage from "./pages/promotion";
 
 function App(props) {
   return (
@@ -11,6 +12,10 @@ function App(props) {
       <div>
         <Switch>
           <Route exact path={routePath.HOME_PAGE_PATH} component={HomePage} />
+          <Route
+            path={routePath.PROMOTION_PAGE_PATH}
+            component={PromotionPage}
+          />
         </Switch>
       </div>
     </Router>
