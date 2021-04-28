@@ -3,6 +3,8 @@ import { watcherBanner } from "./banner";
 import { watcherPromotion } from "./promotion";
 import { watcherReview } from "./review";
 import { watcherBlog } from "./blog";
+import { watcherFilm } from "./film";
+import { watcherAuth } from "./auth";
 
 export default function* watcherSaga() {
   yield all([
@@ -10,5 +12,7 @@ export default function* watcherSaga() {
     watcherPromotion(),
     watcherReview(),
     watcherBlog(),
+    watcherFilm(),
+    watcherAuth(),
   ]);
 }

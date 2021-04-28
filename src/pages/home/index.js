@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { getBanners } from "../../reducers/banner";
+import { getPlayingMovies, getOngoingMovies } from "../../reducers/film";
 import { getPromotions } from "../../reducers/promotion";
 import { getReviewNewses } from "../../reducers/review";
 import { getBlogNewses } from "../../reducers/blog";
 import PendingSpinner from "../../components/pending-spinner";
+import Slider from "../../components/slider";
 import { Link } from "react-router-dom";
 import * as routePath from "../../constants/routes";
 import { useTranslation } from "react-i18next";
@@ -17,6 +19,12 @@ function HomePage(props) {
   const [index, setIndex] = useState(0);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const {
+    playingMovies,
+    ongoingMovies,
+    pendingPlayingMovies,
+    pendingOngoingMovies,
+  } = useSelector((state) => state.film);
   const { banners, pending: pendingBanners } = useSelector(
     (state) => state.banner
   );
@@ -32,6 +40,8 @@ function HomePage(props) {
 
   useEffect(() => {
     dispatch(getBanners());
+    dispatch(getPlayingMovies());
+    dispatch(getOngoingMovies());
     dispatch(getPromotions({ page: 1, limit: 8 }));
     dispatch(getReviewNewses({ page: 1, limit: 4 }));
     dispatch(getBlogNewses({ page: 1, limit: 4 }));
@@ -62,9 +72,11 @@ function HomePage(props) {
           <div className="main-title">
             {t("common.list_title.playing_movie")}
           </div>
+          <Slider data={playingMovies} />
           <div className="main-title">
             {t("common.list_title.ongoing_movie")}
           </div>
+          <Slider data={ongoingMovies} />
           <div className="main-title">
             <Link
               to={routePath.PROMOTION_PAGE_PATH}
@@ -156,6 +168,8 @@ function HomePage(props) {
         <Footer />
       </div>
       {(pendingBanners ||
+        pendingPlayingMovies ||
+        pendingOngoingMovies ||
         pendingPromotions ||
         pendingReviewNewses ||
         pendingBlogNewses) && <PendingSpinner />}
