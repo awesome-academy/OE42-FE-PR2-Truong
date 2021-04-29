@@ -14,19 +14,30 @@
             "not_have_account": "Chưa có tài khoản?",
             "have_account": "Đã có tài khoản?",
             "accept_policy": "Tôi đã đọc và đồng ý với chính sách của chương trình.",
-            "language": "Ngôn ngữ: "
+            "language": "Ngôn ngữ: ",
+            "personal_info": "Thông tin cá nhân",
+            "change_password": "Đổi mật khẩu"
         },
         "button_title": {
             "detail": "Chi tiết",
             "order_ticket": "Đặt vé",
             "evaluate": "Đánh giá",
             "login": "Đăng nhập",
-            "register": "Đăng ký"
+            "register": "Đăng ký",
+            "update": "Cập nhật"
         }
     },
     "unit": {
         "minute": "phút",
         "minutes": "phút"
+    },
+    "notification": {
+        "update_personal_info_success": "Cập nhật thông tin cá nhân thành công",
+        "update_password_success": "Cập nhật mật khẩu thành công",
+        "account_exists": "Tài khoản đã tồn tại",
+        "invalid_token": "Token không hợp lệ",
+        "invalid_account": "Tên tài khoản hoặc mật khẩu không đúng",
+        "error_occur": "Đã xảy ra lỗi"
     },
     "validation_error": {
         "username": {
@@ -49,7 +60,8 @@
     "error": {
         "not_found_film": "Không tìm thấy phim nào tương ứng với ",
         "not_found_page": "Xin lỗi, trang web bạn đang tìm kiếm không tồn tại!",
-        "login_failed": "Tài khoản hoặc mật khẩu không đúng!"
+        "login_failed": "Tài khoản hoặc mật khẩu không đúng!",
+        "incorrect_old_password": "Mật khẩu cũ không đúng"
     },
     "placeholder": {
         "username": "Username",
@@ -58,6 +70,14 @@
         "dob": "Ngày sinh",
         "full_name": "Họ và tên",
         "address": "Địa chỉ"
+    },
+    "label": {
+        "fullname": "Họ tên",
+        "address": "Địa chỉ",
+        "password": "Mật khẩu",
+        "old_pass": "Mật khẩu cũ",
+        "new_pass": "Mật khẩu mới",
+        "confirm": "Xác thực"
     },
     "movie_title": {
         "category": "Thể loại",

@@ -3,6 +3,8 @@ import * as blogAction from "../reducers/blog";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
 import { LIMIT_NEWS_PER_PAGE } from "../constants/limitRecord";
+import { getTranslation } from "../utils/getTranslation";
+import { toast } from "react-toastify";
 
 const getBlogNewsesApi = (page, limit) =>
   axios.get(
@@ -10,6 +12,8 @@ const getBlogNewsesApi = (page, limit) =>
   );
 
 export function* getBlogNewses(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const { page, limit } = action.payload;
     const response = yield call(getBlogNewsesApi, page, limit);
@@ -23,10 +27,12 @@ export function* getBlogNewses(action) {
         })
       );
     } else {
-      yield put(blogAction.getBlogNewsesFailed("Đã xảy ra lỗi!"));
+      yield put(blogAction.getBlogNewsesFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(blogAction.getBlogNewsesFailed("Đã xảy ra lỗi!"));
+    yield put(blogAction.getBlogNewsesFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
@@ -34,15 +40,19 @@ const getDetailBlogApi = (id) =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_BLOG_NEWS + "/" + id);
 
 export function* getDetailBlog(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const response = yield call(getDetailBlogApi, action.payload);
     if (response.statusText === "OK") {
       yield put(blogAction.getDetailBlogSuccess(response.data));
     } else {
-      yield put(blogAction.getDetailBlogFailed("Đã xảy ra lỗi!"));
+      yield put(blogAction.getDetailBlogFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(blogAction.getDetailBlogFailed("Đã xảy ra lỗi!"));
+    yield put(blogAction.getDetailBlogFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 

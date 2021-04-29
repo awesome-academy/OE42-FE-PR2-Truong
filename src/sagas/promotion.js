@@ -3,6 +3,8 @@ import * as promotionAction from "../reducers/promotion";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
 import { LIMIT_PROMOTION_PER_PAGE } from "../constants/limitRecord";
+import { getTranslation } from "../utils/getTranslation";
+import { toast } from "react-toastify";
 
 const getPromotionsApi = (page, limit) =>
   page && limit
@@ -14,6 +16,8 @@ const getPromotionsApi = (page, limit) =>
     : axios.get(apiUrl.BASE_URL + apiUrl.API_PROMOTION);
 
 export function* getPromotions(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const { page, limit } = action.payload || {};
     const response = yield call(getPromotionsApi, page, limit);
@@ -29,10 +33,12 @@ export function* getPromotions(action) {
         })
       );
     } else {
-      yield put(promotionAction.getPromotionsFailed("Đã xảy ra lỗi!"));
+      yield put(promotionAction.getPromotionsFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(promotionAction.getPromotionsFailed("Đã xảy ra lỗi!"));
+    yield put(promotionAction.getPromotionsFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
@@ -40,15 +46,19 @@ const getDetailPromotionApi = (id) =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_PROMOTION + "/" + id);
 
 export function* getDetailPromotion(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const response = yield call(getDetailPromotionApi, action.payload);
     if (response.statusText === "OK") {
       yield put(promotionAction.getDetailPromotionSuccess(response.data));
     } else {
-      yield put(promotionAction.getDetailPromotionFailed("Đã xảy ra lỗi!"));
+      yield put(promotionAction.getDetailPromotionFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(promotionAction.getDetailPromotionFailed("Đã xảy ra lỗi!"));
+    yield put(promotionAction.getDetailPromotionFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 

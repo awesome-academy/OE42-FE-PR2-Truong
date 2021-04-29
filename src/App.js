@@ -10,8 +10,12 @@ import FilmPage from "./pages/film";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import NotFoundPage from "./pages/not-found";
+import PersonalInfoPage from "./pages/personal-info";
 import { useDispatch } from "react-redux";
 import { getUserInfo } from "./reducers/auth";
+import PrivateRoute from "./routes/privateRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -26,6 +30,16 @@ function App(props) {
   return (
     <Router>
       <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+        />
         <Switch>
           <Route exact path={routePath.HOME_PAGE_PATH} component={HomePage} />
           <Route
@@ -36,7 +50,15 @@ function App(props) {
           <Route path={routePath.BLOG_PAGE_PATH} component={NewsPage} />
           <Route path={routePath.FILM_PAGE_PATH} component={FilmPage} />
           <Route exact path={routePath.LOGIN_PAGE_PATH} component={LoginPage} />
-          <Route exact path={routePath.REGISTER_PAGE_PATH} component={RegisterPage} />
+          <Route
+            exact
+            path={routePath.REGISTER_PAGE_PATH}
+            component={RegisterPage}
+          />
+          <PrivateRoute
+            path={routePath.PERSONAL_PAGE_PATH}
+            component={PersonalInfoPage}
+          />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

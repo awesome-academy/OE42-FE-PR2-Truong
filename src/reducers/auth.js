@@ -57,6 +57,32 @@ export const authSlice = createSlice({
       state.pending = false;
       state.error = action.payload;
     },
+    putPersonalInfo: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    putPersonalInfoSuccess: (state, action) => {
+      state.user = action.payload;
+      state.pending = false;
+      state.error = null;
+    },
+    putPersonalInfoFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
+    putPassword: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    putPasswordSuccess: (state, action) => {
+      state.user = { ...state.user, password: action.payload };
+      state.pending = false;
+      state.error = null;
+    },
+    putPasswordFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
     logout: (state) => {
       localStorage.removeItem("token");
       state.user = {};
@@ -75,6 +101,12 @@ export const {
   postSignUp,
   postSignUpSuccess,
   postSignUpFailed,
+  putPersonalInfo,
+  putPersonalInfoSuccess,
+  putPersonalInfoFailed,
+  putPassword,
+  putPasswordSuccess,
+  putPasswordFailed,
   logout,
 } = authSlice.actions;
 

@@ -18,7 +18,7 @@ function LoginPage(props) {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
-  const { token, pending, error } = useSelector((state) => state.auth);
+  const { token, pending } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (token) {
@@ -53,7 +53,6 @@ function LoginPage(props) {
                 <div className="form-title">
                   {t("common.list_title.login_title")}
                 </div>
-                {error && <div className="error-item">{error}</div>}
                 <Field
                   name="username"
                   component={CustomInput}

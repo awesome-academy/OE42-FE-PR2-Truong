@@ -928,19 +928,21 @@
   ],
   "accounts": [
     {
-      "id": 1,
-      "username": "truongpro",
       "password": "123456",
+      "fullName": "Nguyễn Đình Trường",
+      "address": "898 Trần Cao Vân",
+      "username": "truongpro",
+      "role": "user",
       "token": "secret-token",
-      "fullname": "Nguyễn Đình Trường",
-      "role": "user"
+      "id": 1
     },
     {
       "id": 2,
       "username": "tuanle",
       "password": "123456",
       "token": "secret-token-2",
-      "fullname": "Lê Anh Tuấn",
+      "fullName": "Lê Anh Tuấn",
+      "address": "ha tinh",
       "role": "admin"
     }
   ]
