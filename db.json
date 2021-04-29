@@ -23,7 +23,6 @@
   ],
   "movies": [
     {
-      "id": 1,
       "name": "Chìa khóa trăm tỷ",
       "img": "https://media.lottecinemavn.com/Media/WebAdmin/25f09fc3d10540a1a484e72e535084eb.jpg",
       "trailer": "jox0zmGyHLU",
@@ -40,9 +39,18 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
-      "status": "PLAYING"
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
+      "status": "PLAYING",
+      "id": 1
     },
     {
       "id": 2,
@@ -62,12 +70,19 @@
         "Samuel An"
       ],
       "publishedDate": "20/4/2021",
-      "ratingAverage": 8,
-      "ratingQuantity": 252,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
-      "id": 3,
       "name": "Lật mặt: 48h",
       "img": "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202103/10453_101_100004.jpg",
       "trailer": "jox0zmGyHLU",
@@ -84,9 +99,18 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 7,
-      "ratingQuantity": 122,
-      "status": "PLAYING"
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 10
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
+      "status": "PLAYING",
+      "id": 3
     },
     {
       "id": 4,
@@ -106,8 +130,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 9.5,
-      "ratingQuantity": 232,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -128,8 +160,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 6,
-      "ratingQuantity": 234,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -150,8 +190,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 7.5,
-      "ratingQuantity": 867,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -172,8 +220,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 9,
-      "ratingQuantity": 767,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -194,8 +250,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 6.5,
-      "ratingQuantity": 525,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -216,8 +280,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 9,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -238,8 +310,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "14/4/2021",
-      "ratingAverage": 7.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "PLAYING"
     },
     {
@@ -260,8 +340,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -282,8 +370,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -304,8 +400,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -326,8 +430,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -348,8 +460,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -370,8 +490,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -392,8 +520,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -414,8 +550,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -436,8 +580,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     },
     {
@@ -458,8 +610,16 @@
         "Võ Thành Tâm"
       ],
       "publishedDate": "30/4/2021",
-      "ratingAverage": 8.5,
-      "ratingQuantity": 641,
+      "ratings": [
+        {
+          "accountId": 1,
+          "rating": 9
+        },
+        {
+          "accountId": 2,
+          "rating": 8
+        }
+      ],
       "status": "ONGOING"
     }
   ],

@@ -1,6 +1,8 @@
 import React from "react";
 import "./style.sass";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { FILM_PAGE_PATH } from "../../constants/routes";
 
 function AdditionalFilmList({ movies }) {
   const { t } = useTranslation();
@@ -16,7 +18,9 @@ function AdditionalFilmList({ movies }) {
             <div className="img-container">
               <img src={movie.img} alt={movie.name} />
               <div className="action-container">
-                <a href="/">{t("common.button_title.order_ticket")}</a>
+                <Link to={FILM_PAGE_PATH + "/" + movie.id}>
+                  {t("common.button_title.order_ticket")}
+                </Link>
               </div>
             </div>
             <h5>{movie.name}</h5>
