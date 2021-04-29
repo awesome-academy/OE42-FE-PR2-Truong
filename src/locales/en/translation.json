@@ -14,19 +14,30 @@
             "not_have_account": "Don't have an account?",
             "have_account": "Already have an account?",
             "accept_policy": "I have read and agree to the program policy.",
-            "language": "Language: "
+            "language": "Language: ",
+            "personal_info": "Personal info",
+            "change_password": "Change password"
         },
         "button_title": {
             "detail": "Detail",
             "order_ticket": "Order ticket",
             "evaluate": "Evaluate",
             "login": "Login",
-            "register": "Register"
+            "register": "Register",
+            "update": "Update"
         }
     },
     "unit": {
         "minute": "minute",
         "minutes": "minutes"
+    },
+    "notification": {
+        "update_personal_info_success": "Updated personal info successfully",
+        "update_password_success": "Updated password successfully",
+        "account_exists": "Account already exists",
+        "invalid_token": "Invalid token",
+        "invalid_account": "Username or password is incorrect",
+        "error_occur": "An error occurred"
     },
     "validation_error": {
         "username": {
@@ -49,7 +60,8 @@
     "error": {
         "not_found_film": "Not found any film with name is ",
         "not_found_page": "Sorry, the page you're looking for does not exist!",
-        "login_failed": "Username or password is incorrect!"
+        "login_failed": "Username or password is incorrect!",
+        "incorrect_old_password": "Old password ís incorrect"
     },
     "placeholder": {
         "username": "Username",
@@ -58,6 +70,14 @@
         "dob": "Date of birth",
         "full_name": "Fullname",
         "address": "Address"
+    },
+    "label": {
+        "fullname": "Fullname",
+        "address": "Address",
+        "password": "Password",
+        "old_pass": "Old password",
+        "new_pass": "New password",
+        "confirm": "Confirm"
     },
     "movie_title": {
         "category": "Category",

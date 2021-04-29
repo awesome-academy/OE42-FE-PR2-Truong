@@ -1,6 +1,9 @@
 import translationVI from "../locales/vi/translation.json";
 import translationEN from "../locales/en/translation.json";
 
-const lng = localStorage.getItem("i18nextLng");
-
-export default lng === "en" ? translationEN : lng === "vi" ? translationVI : {};
+export const getTranslation = () =>
+  localStorage.getItem("i18nextLng") === "en"
+    ? translationEN
+    : localStorage.getItem("i18nextLng") === "vi"
+    ? translationVI
+    : {};

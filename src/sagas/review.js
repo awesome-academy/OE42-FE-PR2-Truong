@@ -3,6 +3,8 @@ import * as reviewAction from "../reducers/review";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
 import { LIMIT_NEWS_PER_PAGE } from "../constants/limitRecord";
+import { getTranslation } from "../utils/getTranslation";
+import { toast } from "react-toastify";
 
 const getReviewNewsesApi = (page, limit) =>
   axios.get(
@@ -12,6 +14,8 @@ const getReviewNewsesApi = (page, limit) =>
   );
 
 export function* getReviewNewses(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const { page, limit } = action.payload;
     const response = yield call(getReviewNewsesApi, page, limit);
@@ -25,32 +29,34 @@ export function* getReviewNewses(action) {
         })
       );
     } else {
-      yield put(reviewAction.getReviewNewsesFailed("Đã xảy ra lỗi!"));
+      yield put(reviewAction.getReviewNewsesFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(reviewAction.getReviewNewsesFailed("Đã xảy ra lỗi!"));
+    yield put(reviewAction.getReviewNewsesFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
 const getDetailReviewApi = (id) =>
   axios.get(
-    apiUrl.BASE_URL +
-      apiUrl.API_REVIEW_NEWS +
-      "/" +
-      id +
-      "?_expand=movie"
+    apiUrl.BASE_URL + apiUrl.API_REVIEW_NEWS + "/" + id + "?_expand=movie"
   );
 
 export function* getDetailReview(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const response = yield call(getDetailReviewApi, action.payload);
     if (response.statusText === "OK") {
       yield put(reviewAction.getDetailReviewSuccess(response.data));
     } else {
-      yield put(reviewAction.getDetailReviewFailed("Đã xảy ra lỗi!"));
+      yield put(reviewAction.getDetailReviewFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(reviewAction.getDetailReviewFailed("Đã xảy ra lỗi!"));
+    yield put(reviewAction.getDetailReviewFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 

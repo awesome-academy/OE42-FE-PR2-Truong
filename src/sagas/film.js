@@ -3,20 +3,26 @@ import * as filmAction from "../reducers/film";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
 import { LIMIT_SEARCH_MOVIES_PER_PAGE } from "../constants/limitRecord";
+import { getTranslation } from "../utils/getTranslation";
+import { toast } from "react-toastify";
 
 const getPlayingMoviesApi = () =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=PLAYING");
 
 export function* getPlayingMovies() {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const response = yield call(getPlayingMoviesApi);
     if (response.statusText === "OK") {
       yield put(filmAction.getPlayingMoviesSuccess(response.data));
     } else {
-      yield put(filmAction.getPlayingMoviesFailed("Đã xảy ra lỗi!"));
+      yield put(filmAction.getPlayingMoviesFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(filmAction.getPlayingMoviesFailed("Đã xảy ra lỗi!"));
+    yield put(filmAction.getPlayingMoviesFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
@@ -24,15 +30,19 @@ const getOngoingMoviesApi = () =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=ONGOING");
 
 export function* getOngoingMovies() {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const response = yield call(getOngoingMoviesApi);
     if (response.statusText === "OK") {
       yield put(filmAction.getOngoingMoviesSuccess(response.data));
     } else {
-      yield put(filmAction.getOngoingMoviesFailed("Đã xảy ra lỗi!"));
+      yield put(filmAction.getOngoingMoviesFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(filmAction.getOngoingMoviesFailed("Đã xảy ra lỗi!"));
+    yield put(filmAction.getOngoingMoviesFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
@@ -44,16 +54,20 @@ const getPlayingHottestMoviesApi = (limit) =>
   );
 
 export function* getPlayingHottestMovies(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const { limit } = action.payload;
     const response = yield call(getPlayingHottestMoviesApi, limit);
     if (response.statusText === "OK") {
       yield put(filmAction.getPlayingHottestMoviesSuccess(response.data));
     } else {
-      yield put(filmAction.getPlayingHottestMoviesFailed("Đã xảy ra lỗi!"));
+      yield put(filmAction.getPlayingHottestMoviesFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(filmAction.getPlayingHottestMoviesFailed("Đã xảy ra lỗi!"));
+    yield put(filmAction.getPlayingHottestMoviesFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
@@ -61,15 +75,19 @@ const getDetailMovieApi = (id) =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_MOVIE + "/" + id);
 
 export function* getDetailMovie(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const response = yield call(getDetailMovieApi, action.payload);
     if (response.statusText === "OK") {
       yield put(filmAction.getDetailMovieSuccess(response.data));
     } else {
-      yield put(filmAction.getDetailMovieFailed("Đã xảy ra lỗi!"));
+      yield put(filmAction.getDetailMovieFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(filmAction.getDetailMovieFailed("Đã xảy ra lỗi!"));
+    yield put(filmAction.getDetailMovieFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
@@ -81,6 +99,8 @@ const getSearchMoviesApi = (keyword, page, limit) =>
   );
 
 export function* getSearchMovies(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
   try {
     const { keyword, page, limit } = action.payload;
     const response = yield call(getSearchMoviesApi, keyword, page, limit);
@@ -96,10 +116,12 @@ export function* getSearchMovies(action) {
         })
       );
     } else {
-      yield put(filmAction.getSearchMoviesFailed("Đã xảy ra lỗi!"));
+      yield put(filmAction.getSearchMoviesFailed(errorMessage));
+      toast.error(errorMessage);
     }
   } catch {
-    yield put(filmAction.getSearchMoviesFailed("Đã xảy ra lỗi!"));
+    yield put(filmAction.getSearchMoviesFailed(errorMessage));
+    toast.error(errorMessage);
   }
 }
 
