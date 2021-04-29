@@ -9,11 +9,15 @@ import {
 import { useParams } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import RatingFilm from "../../../components/rating-film";
+import { getAverageRating } from "../../../utils/getAverageRating";
+import { FILM_PAGE_PATH } from "../../../constants/routes";
 
 function FilmDetail(props) {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { playingMovies, selectedMovie } = useSelector((state) => state.film);
+  const { token } = useSelector((state) => state.auth);
   const { filmId } = useParams();
   const { t } = useTranslation();
 
@@ -44,9 +48,19 @@ function FilmDetail(props) {
             <h5 className="film-name">{selectedMovie.name}</h5>
             <div className="rating-container">
               <i className="fa fa-star"></i>
-              <strong>{selectedMovie.ratingAverage}</strong>
-              <span>/10 ({selectedMovie.ratingQuantity})</span>
+              <strong>
+                {selectedMovie.ratings?.length
+                  ? getAverageRating(selectedMovie.ratings)
+                  : 0}
+              </strong>
+              <span>/10 ({selectedMovie.ratings?.length || 0})</span>
             </div>
+            {token && (
+              <RatingFilm
+                movie={selectedMovie}
+                from={FILM_PAGE_PATH}
+              />
+            )}
             <div className="time">
               <i className="fa fa-clock-o"></i>
               <span>

@@ -85,6 +85,21 @@ export const filmSlice = createSlice({
       state.pending = false;
       state.error = action.payload;
     },
+    putRating: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    putRatingSuccess: (state, action) => {
+      if (action.payload) {
+        state.selectedMovie = action.payload;
+      }
+      state.pending = false;
+      state.error = null;
+    },
+    putRatingFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -104,6 +119,9 @@ export const {
   getSearchMovies,
   getSearchMoviesSuccess,
   getSearchMoviesFailed,
+  putRating,
+  putRatingSuccess,
+  putRatingFailed,
 } = filmSlice.actions;
 
 export default filmSlice.reducer;

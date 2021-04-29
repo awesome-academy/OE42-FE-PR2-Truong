@@ -34,6 +34,7 @@
     "notification": {
         "update_personal_info_success": "Cập nhật thông tin cá nhân thành công",
         "update_password_success": "Cập nhật mật khẩu thành công",
+        "rating_success": "Đánh giá phim thành công",
         "account_exists": "Tài khoản đã tồn tại",
         "invalid_token": "Token không hợp lệ",
         "invalid_account": "Tên tài khoản hoặc mật khẩu không đúng",

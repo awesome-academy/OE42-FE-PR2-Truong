@@ -1,10 +1,12 @@
 import { takeEvery, put, call } from "redux-saga/effects";
 import * as filmAction from "../reducers/film";
+import * as reviewAction from "../reducers/review";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
 import { LIMIT_SEARCH_MOVIES_PER_PAGE } from "../constants/limitRecord";
 import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
+import * as routePath from "../constants/routes";
 
 const getPlayingMoviesApi = () =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=PLAYING");
@@ -125,10 +127,39 @@ export function* getSearchMovies(action) {
   }
 }
 
+const putRatingApi = (id, info) =>
+  axios.put(apiUrl.BASE_URL + apiUrl.API_MOVIE + "/" + id, info);
+
+export function* putRating(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { movie, from } = action.payload;
+    const { id, ...restMovieProps } = movie;
+    const response = yield call(putRatingApi, id, { ...restMovieProps });
+    if (response.statusText === "OK") {
+      if (from === routePath.FILM_PAGE_PATH) {
+        yield put(filmAction.putRatingSuccess(movie));
+      } else if (from === routePath.REVIEW_PAGE_PATH) {
+        yield put(filmAction.putRatingSuccess());
+        yield put(reviewAction.setMovieReview(movie));
+      }
+      toast.success(translation.notification?.rating_success);
+    } else {
+      yield put(filmAction.putRatingFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(filmAction.putRatingFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
 export function* watcherFilm() {
   yield takeEvery(filmAction.getPlayingMovies, getPlayingMovies);
   yield takeEvery(filmAction.getOngoingMovies, getOngoingMovies);
   yield takeEvery(filmAction.getPlayingHottestMovies, getPlayingHottestMovies);
   yield takeEvery(filmAction.getDetailMovie, getDetailMovie);
   yield takeEvery(filmAction.getSearchMovies, getSearchMovies);
+  yield takeEvery(filmAction.putRating, putRating);
 }

@@ -40,6 +40,9 @@ export const reviewSlice = createSlice({
       state.pending = false;
       state.error = action.payload;
     },
+    setMovieReview: (state, action) => {
+      state.selectedReview = { ...state.selectedReview, movie: action.payload };
+    },
   },
 });
 
@@ -50,6 +53,7 @@ export const {
   getDetailReview,
   getDetailReviewSuccess,
   getDetailReviewFailed,
+  setMovieReview,
 } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

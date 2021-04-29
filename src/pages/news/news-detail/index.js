@@ -4,14 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailReview } from "../../../reducers/review";
 import { getDetailBlog } from "../../../reducers/blog";
-import { useTranslation } from "react-i18next";
+import RatingFilm from "../../../components/rating-film";
+import { getAverageRating } from "../../../utils/getAverageRating";
+import { REVIEW_PAGE_PATH } from "../../../constants/routes";
 
 function NewsDetail(props) {
   const dispatch = useDispatch();
   const { selectedReview } = useSelector((state) => state.review);
   const { selectedBlog } = useSelector((state) => state.blog);
+  const { token } = useSelector((state) => state.auth);
   const { newsId } = useParams();
-  const { t } = useTranslation();
 
   useEffect(() => {
     if (props.path === "/review") {
@@ -36,44 +38,19 @@ function NewsDetail(props) {
             <i className="fa fa-star"></i>
           </div>
           <div className="rating-info">
-            <strong>{selectedReview.movie?.ratingAverage}</strong>
-            <span>/10 ({selectedReview.movie?.ratingQuantity})</span>
+            <strong>
+              {selectedReview.movie?.ratings?.length
+                ? getAverageRating(selectedReview.movie.ratings)
+                : 0}
+            </strong>
+            <span>/10 ({selectedReview.movie?.ratings?.length || 0})</span>
           </div>
-          <button className="rating-button">
-            {t("common.button_title.evaluate")}
-          </button>
-          <div className="rating-group">
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="rating-item">
-              <i className="fa fa-star"></i>
-            </div>
-          </div>
+          {token && (
+            <RatingFilm
+              movie={selectedReview.movie}
+              from={REVIEW_PAGE_PATH}
+            />
+          )}
         </div>
       )}
       <div
