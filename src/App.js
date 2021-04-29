@@ -8,6 +8,7 @@ import PromotionPage from "./pages/promotion";
 import NewsPage from "./pages/news";
 import FilmPage from "./pages/film";
 import LoginPage from "./pages/login";
+import RegisterPage from "./pages/register";
 import NotFoundPage from "./pages/not-found";
 import { useDispatch } from "react-redux";
 import { getUserInfo } from "./reducers/auth";
@@ -34,7 +35,8 @@ function App(props) {
           <Route path={routePath.REVIEW_PAGE_PATH} component={NewsPage} />
           <Route path={routePath.BLOG_PAGE_PATH} component={NewsPage} />
           <Route path={routePath.FILM_PAGE_PATH} component={FilmPage} />
-          <Route path={routePath.LOGIN_PAGE_PATH} component={LoginPage} />
+          <Route exact path={routePath.LOGIN_PAGE_PATH} component={LoginPage} />
+          <Route exact path={routePath.REGISTER_PAGE_PATH} component={RegisterPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

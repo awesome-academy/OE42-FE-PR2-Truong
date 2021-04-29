@@ -1,4 +1,3 @@
-
 {
     "common": {
         "list_title": {
@@ -14,7 +13,8 @@
             "register_now": "Register now",
             "not_have_account": "Don't have an account?",
             "have_account": "Already have an account?",
-            "accept_policy": "I have read and agree to the program policy."
+            "accept_policy": "I have read and agree to the program policy.",
+            "language": "Language: "
         },
         "button_title": {
             "detail": "Detail",
@@ -40,7 +40,8 @@
             "too_short": "Password length must be at least 5 characters.",
             "too_long": "Password length must not exceed 20 characters.",
             "null": "Password must not be null.",
-            "confirm": "Please confirm your password!"
+            "confirm": "Please confirm your password!",
+            "not_match": "Password not match"
         },
         "fullname_null": "Fullname must not be null",
         "address_null": "Address must not be null"

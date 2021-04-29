@@ -13,7 +13,8 @@
             "register_now": "Đăng ký ngay",
             "not_have_account": "Chưa có tài khoản?",
             "have_account": "Đã có tài khoản?",
-            "accept_policy": "Tôi đã đọc và đồng ý với chính sách của chương trình."
+            "accept_policy": "Tôi đã đọc và đồng ý với chính sách của chương trình.",
+            "language": "Ngôn ngữ: "
         },
         "button_title": {
             "detail": "Chi tiết",
@@ -39,7 +40,8 @@
             "too_short": "Mật khẩu phải có ít nhất 5 ký tự.",
             "too_long": "Mật khẩu không được vượt quá 20 ký tự.",
             "null": "Mật khẩu không được để trống.",
-            "confirm": "Vui lòng xác thực lại mật khẩu!"
+            "confirm": "Vui lòng xác thực lại mật khẩu!",
+            "not_match": "Mật khẩu không khớp"
         },
         "fullname_null": "Họ tên không được để trống",
         "address_null": "Địa chỉ không được để trống"

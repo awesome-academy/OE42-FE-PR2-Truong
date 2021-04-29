@@ -5,14 +5,14 @@ import logo from "../../assets/images/user.png";
 import * as routePath from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import PendingSpinner from "../../components/pending-spinner";
-import { Formik, Form, Field } from "formik";
-import { postLogin } from "../../reducers/auth";
 import { useTranslation } from "react-i18next";
-import signInSchema from "../../validations/signInSchema";
+import { Formik, Form, Field } from "formik";
 import CustomInput from "../../components/custom-input";
+import SignUpSchema from "../../validations/signUpSchema";
+import { postSignUp } from "../../reducers/auth";
 import ToggleLanguageButton from "../../components/toggle-language-button";
 
-function LoginPage(props) {
+function RegisterPage(props) {
   const history = useHistory();
   const location = useLocation();
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ function LoginPage(props) {
   }, [history, location, token]);
 
   return (
-    <section className="login-page-container">
+    <section className="register-page-container">
       <div className="form-container">
         <div className="avatar">
           <img src={logo} alt="user icon" />
@@ -42,16 +42,20 @@ function LoginPage(props) {
             initialValues={{
               username: "",
               password: "",
+              confirmPassword: "",
+              fullName: "",
+              address: "",
             }}
-            validationSchema={signInSchema}
+            validationSchema={SignUpSchema}
             onSubmit={(values) => {
-              dispatch(postLogin(values));
+              const { confirmPassword, ...restProps } = values;
+              dispatch(postSignUp({ ...restProps }));
             }}
           >
             {({ errors, touched }) => (
               <Form>
                 <div className="form-title">
-                  {t("common.list_title.login_title")}
+                  {t("common.list_title.register_title")}
                 </div>
                 {error && <div className="error-item">{error}</div>}
                 <Field
@@ -74,11 +78,43 @@ function LoginPage(props) {
                 {errors.password && touched.password ? (
                   <span>{t(errors.password)}</span>
                 ) : null}
-                <button type="submit">{t("common.button_title.login")}</button>
+                <Field
+                  name="confirmPassword"
+                  component={CustomInput}
+                  placeholder={t("placeholder.confirm_password")}
+                  icon="lock"
+                  type="password"
+                />
+                {errors.confirmPassword && touched.confirmPassword ? (
+                  <span>{t(errors.confirmPassword)}</span>
+                ) : null}
+                <Field
+                  name="fullName"
+                  component={CustomInput}
+                  placeholder={t("placeholder.full_name")}
+                  icon="user-md"
+                  type="text"
+                />
+                {errors.fullName && touched.fullName ? (
+                  <span>{t(errors.fullName)}</span>
+                ) : null}
+                <Field
+                  name="address"
+                  component={CustomInput}
+                  placeholder={t("placeholder.address")}
+                  icon="location-arrow"
+                  type="text"
+                />
+                {errors.address && touched.address ? (
+                  <span>{t(errors.address)}</span>
+                ) : null}
+                <button type="submit">
+                  {t("common.button_title.register")}
+                </button>
                 <div className="register-item">
-                  <span>{t("common.list_title.not_have_account")} </span>
-                  <Link to={routePath.REGISTER_PAGE_PATH}>
-                    {t("common.list_title.register_now")}
+                  <span>{t("common.list_title.have_account")} </span>
+                  <Link to={routePath.LOGIN_PAGE_PATH}>
+                    {t("common.list_title.login_now")}
                   </Link>
                 </div>
               </Form>
@@ -91,4 +127,4 @@ function LoginPage(props) {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

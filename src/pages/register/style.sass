@@ -1,7 +1,7 @@
 @import "../../assets/style/vars"
 @import "../../assets/style/common"
 
-section.login-page-container
+section.register-page-container
     @extend %flex-center
     min-height: 100vh
     background-image: linear-gradient(to right, #0185ee , #f107f2)
@@ -33,15 +33,15 @@ section.login-page-container
             @extend %flex-center
             flex-direction: column
             padding: 2rem 4rem
+            & > span
+                color: red
+                font-size: 0.9rem
             .form-title
                 font-weight: bold
                 letter-spacing: 0.2rem
                 padding: 0.5rem 0
-            & > span
-                color: red
-                font-size: 0.9rem
             button[type="submit"]
-                margin-top: 1rem
+                margin-top: 0.5rem
                 width: 100%
                 border: none
                 border-radius: 1.5rem

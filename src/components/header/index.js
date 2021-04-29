@@ -99,12 +99,12 @@ function Header(props) {
             {token ? (
               <>
                 <li>
-                  <Link to="/personal-account">
+                  <Link to={routePath.PERSONAL_PAGE_PATH}>
                     {t("header.top_header.personal_account")}
                   </Link>
                 </li>
                 <li>
-                  <a href="/" onClick={handleLogout}>
+                  <a href={routePath.HOME_PAGE_PATH} onClick={handleLogout}>
                     {t("header.top_header.logout")}
                   </a>
                 </li>
@@ -112,12 +112,24 @@ function Header(props) {
             ) : (
               <>
                 <li>
-                  <Link to={{ pathname: "/login", state: { from: location } }}>
+                  <Link
+                    to={{
+                      pathname: routePath.LOGIN_PAGE_PATH,
+                      state: { from: location },
+                    }}
+                  >
                     {t("header.top_header.login")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="/register">{t("header.top_header.register")}</Link>
+                  <Link
+                    to={{
+                      pathname: routePath.REGISTER_PAGE_PATH,
+                      state: { from: location },
+                    }}
+                  >
+                    {t("header.top_header.register")}
+                  </Link>
                 </li>
               </>
             )}
