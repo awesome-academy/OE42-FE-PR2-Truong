@@ -22,9 +22,11 @@ export function* postLogin(action) {
     if (response.statusText === "OK") {
       if (response.data.length !== 0) {
         const { token, ...restProps } = response.data[0];
+        localStorage.setItem("token", token);
         yield put(
           authAction.postLoginSuccess({ user: { ...restProps }, token })
         );
+        toast.success(translation.notification?.login_success);
       } else {
         yield put(
           authAction.postLoginFailed(translation.notification?.invalid_account)
@@ -52,8 +54,11 @@ export function* getUserInfo(action) {
     if (response.statusText === "OK") {
       if (response.data.length !== 0) {
         const { token, ...restProps } = response.data[0];
-        yield put(authAction.getUserInfoSuccess({ ...restProps }));
+        yield put(
+          authAction.getUserInfoSuccess({ user: { ...restProps }, token })
+        );
       } else {
+        localStorage.removeItem("token");
         yield put(
           authAction.getUserInfoFailed(translation.notification?.invalid_token)
         );
@@ -92,9 +97,11 @@ export function* postSignUp(action) {
         const responsePost = yield call(postUserApi, user);
         if (responsePost.statusText === "Created") {
           const { token, password, ...restProps } = responsePost.data;
+          localStorage.setItem("token", token);
           yield put(
             authAction.postSignUpSuccess({ token, user: { ...restProps } })
           );
+          toast.success(translation.notification?.register_success);
         } else {
           yield put(authAction.postSignUpFailed(errorMessage));
           toast.error(errorMessage);
@@ -163,7 +170,9 @@ export function* putPassword(action) {
         toast.success(translation.notification?.update_password_success);
       } else {
         yield put(
-          authAction.putPasswordFailed(translation.error?.incorrect_old_password)
+          authAction.putPasswordFailed(
+            translation.error?.incorrect_old_password
+          )
         );
         toast.error(translation.error?.incorrect_old_password);
       }
@@ -177,10 +186,24 @@ export function* putPassword(action) {
   }
 }
 
+export function* logout() {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  if (localStorage.getItem("token")) {
+    yield put(authAction.logoutSuccess());
+    localStorage.removeItem("token");
+    toast.success(translation.notification?.logout_success);
+  } else {
+    yield put(authAction.logoutFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
 export function* watcherAuth() {
   yield takeEvery(authAction.postLogin, postLogin);
   yield takeEvery(authAction.getUserInfo, getUserInfo);
   yield takeEvery(authAction.postSignUp, postSignUp);
   yield takeEvery(authAction.putPersonalInfo, putPersonalInfo);
   yield takeEvery(authAction.putPassword, putPassword);
+  yield takeEvery(authAction.logout, logout);
 }

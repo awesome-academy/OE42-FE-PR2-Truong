@@ -16,7 +16,8 @@
             "accept_policy": "I have read and agree to the program policy.",
             "language": "Language: ",
             "personal_info": "Personal info",
-            "change_password": "Change password"
+            "change_password": "Change password",
+            "schedule": "Cinema schedule"
         },
         "button_title": {
             "detail": "Detail",
@@ -27,6 +28,10 @@
             "update": "Update"
         }
     },
+    "select_option": {
+        "all_cities": "All cities",
+        "all_cinemas": "All cinemas"
+    },
     "unit": {
         "minute": "minute",
         "minutes": "minutes"
@@ -34,6 +39,9 @@
     "notification": {
         "update_personal_info_success": "Updated personal info successfully",
         "update_password_success": "Updated password successfully",
+        "login_success": "Signed in successfully",
+        "register_success": "Signed up successfully",
+        "logout_success": "Signed out successfully",
         "rating_success": "Evaluated movie successfully",
         "account_exists": "Account already exists",
         "invalid_token": "Invalid token",

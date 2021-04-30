@@ -6,3 +6,6 @@ export const API_PROMOTION = "/promotions";
 export const API_REVIEW_NEWS = "/reviewNewses";
 export const API_BLOG_NEWS = "/blogNewses";
 export const API_AUTH = "/accounts";
+export const API_CITY = "/cities";
+export const API_CINEMA = "/cinemas";
+export const API_SCHEDULE = "/schedules";

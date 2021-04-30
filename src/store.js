@@ -9,6 +9,7 @@ import reviewReducer from "./reducers/review";
 import blogReducer from "./reducers/blog";
 import filmReducer from "./reducers/film";
 import authReducer from "./reducers/auth";
+import cinemaReducer from "./reducers/cinema";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   blog: blogReducer,
   film: filmReducer,
   auth: authReducer,
+  cinema: cinemaReducer,
 });
 
 const store = configureStore({

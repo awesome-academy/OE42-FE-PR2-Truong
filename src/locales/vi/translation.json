@@ -16,7 +16,8 @@
             "accept_policy": "Tôi đã đọc và đồng ý với chính sách của chương trình.",
             "language": "Ngôn ngữ: ",
             "personal_info": "Thông tin cá nhân",
-            "change_password": "Đổi mật khẩu"
+            "change_password": "Đổi mật khẩu",
+            "schedule": "Lịch chiếu"
         },
         "button_title": {
             "detail": "Chi tiết",
@@ -27,6 +28,10 @@
             "update": "Cập nhật"
         }
     },
+    "select_option": {
+        "all_cities": "Cả nước",
+        "all_cinemas": "Tất cả rạp"
+    },
     "unit": {
         "minute": "phút",
         "minutes": "phút"
@@ -34,6 +39,9 @@
     "notification": {
         "update_personal_info_success": "Cập nhật thông tin cá nhân thành công",
         "update_password_success": "Cập nhật mật khẩu thành công",
+        "login_success": "Đăng nhập thành công",
+        "register_success": "Đăng ký thành công",
+        "logout_success": "Đăng xuất thành công",
         "rating_success": "Đánh giá phim thành công",
         "account_exists": "Tài khoản đã tồn tại",
         "invalid_token": "Token không hợp lệ",

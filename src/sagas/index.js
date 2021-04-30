@@ -5,6 +5,7 @@ import { watcherReview } from "./review";
 import { watcherBlog } from "./blog";
 import { watcherFilm } from "./film";
 import { watcherAuth } from "./auth";
+import { watcherCinema } from "./cinema";
 
 export default function* watcherSaga() {
   yield all([
@@ -14,5 +15,6 @@ export default function* watcherSaga() {
     watcherBlog(),
     watcherFilm(),
     watcherAuth(),
+    watcherCinema(),
   ]);
 }
