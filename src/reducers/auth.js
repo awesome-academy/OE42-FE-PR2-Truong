@@ -4,7 +4,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: {},
-    token: localStorage.getItem("token"),
+    token: "",
     pending: false,
     error: null,
   },
@@ -15,7 +15,6 @@ export const authSlice = createSlice({
     },
     postLoginSuccess: (state, action) => {
       const { user, token } = action.payload;
-      localStorage.setItem("token", token);
       state.user = user;
       state.token = token;
       state.pending = false;
@@ -30,12 +29,13 @@ export const authSlice = createSlice({
       state.error = null;
     },
     getUserInfoSuccess: (state, action) => {
-      state.user = action.payload;
+      const { user, token } = action.payload;
+      state.user = user;
+      state.token = token;
       state.pending = false;
       state.error = null;
     },
     getUserInfoFailed: (state, action) => {
-      localStorage.removeItem("token");
       state.user = {};
       state.token = null;
       state.pending = false;
@@ -47,7 +47,6 @@ export const authSlice = createSlice({
     },
     postSignUpSuccess: (state, action) => {
       const { user, token } = action.payload;
-      localStorage.setItem("token", token);
       state.user = user;
       state.token = token;
       state.pending = false;
@@ -84,9 +83,18 @@ export const authSlice = createSlice({
       state.error = action.payload;
     },
     logout: (state) => {
-      localStorage.removeItem("token");
+      state.pending = true;
+      state.error = null;
+    },
+    logoutSuccess: (state) => {
       state.user = {};
       state.token = null;
+      state.pending = false;
+      state.error = null;
+    },
+    logoutFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
     },
   },
 });
@@ -108,6 +116,8 @@ export const {
   putPasswordSuccess,
   putPasswordFailed,
   logout,
+  logoutSuccess,
+  logoutFailed,
 } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./style.sass";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import logo from "../../assets/images/user.png";
@@ -6,7 +6,7 @@ import * as routePath from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import PendingSpinner from "../../components/pending-spinner";
 import { useTranslation } from "react-i18next";
-import { Formik, Form, Field } from "formik";
+import { Formik, Field } from "formik";
 import CustomInput from "../../components/custom-input";
 import SignUpSchema from "../../validations/signUpSchema";
 import { postSignUp } from "../../reducers/auth";
@@ -16,13 +16,19 @@ function RegisterPage(props) {
   const history = useHistory();
   const location = useLocation();
   const { t } = useTranslation();
+  const inputRef = useRef();
 
   const dispatch = useDispatch();
-  const { token, pending, error } = useSelector((state) => state.auth);
+  const { token, pending } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     if (token) {
-      const newPath = location.state?.from?.pathname || "/";
+      const newPath =
+        location.state?.from?.pathname || routePath.HOME_PAGE_PATH;
       history.replace(newPath);
     }
   }, [history, location, token]);
@@ -52,18 +58,23 @@ function RegisterPage(props) {
               dispatch(postSignUp({ ...restProps }));
             }}
           >
-            {({ errors, touched }) => (
-              <Form>
+            {({ handleSubmit, errors, touched }) => (
+              <form
+                onSubmit={handleSubmit}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && handleSubmit();
+                }}
+              >
                 <div className="form-title">
                   {t("common.list_title.register_title")}
                 </div>
-                {error && <div className="error-item">{error}</div>}
                 <Field
                   name="username"
                   component={CustomInput}
                   placeholder={t("placeholder.username")}
                   icon="user"
                   type="text"
+                  innerRef={inputRef}
                 />
                 {errors.username && touched.username ? (
                   <span>{t(errors.username)}</span>
@@ -113,11 +124,18 @@ function RegisterPage(props) {
                 </button>
                 <div className="register-item">
                   <span>{t("common.list_title.have_account")} </span>
-                  <Link to={routePath.LOGIN_PAGE_PATH}>
+                  <Link
+                    to={{
+                      pathname: routePath.LOGIN_PAGE_PATH,
+                      state: {
+                        from: location.state?.from || null,
+                      },
+                    }}
+                  >
                     {t("common.list_title.login_now")}
                   </Link>
                 </div>
-              </Form>
+              </form>
             )}
           </Formik>
         </div>
