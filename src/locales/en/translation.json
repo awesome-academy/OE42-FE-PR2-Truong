@@ -17,7 +17,11 @@
             "language": "Language: ",
             "personal_info": "Personal info",
             "change_password": "Change password",
-            "schedule": "Cinema schedule"
+            "schedule": "Cinema schedule",
+            "ticket_and_food": "Ticket / Services",
+            "choose_seat": "Choose seat",
+            "payment": "Payment",
+            "back_to_homepage": "Go back to homepage"
         },
         "button_title": {
             "detail": "Detail",
@@ -25,12 +29,18 @@
             "evaluate": "Evaluate",
             "login": "Login",
             "register": "Register",
-            "update": "Update"
+            "update": "Update",
+            "next": "Next",
+            "prev": "Previous",
+            "payment": "Pay",
+            "cancel": "Cancel"
         }
     },
     "select_option": {
         "all_cities": "All cities",
-        "all_cinemas": "All cinemas"
+        "all_cinemas": "All cinemas",
+        "online_payment": "Online payment",
+        "offline_payment": "Offline payment"
     },
     "unit": {
         "minute": "minute",
@@ -46,7 +56,9 @@
         "account_exists": "Account already exists",
         "invalid_token": "Invalid token",
         "invalid_account": "Username or password is incorrect",
-        "error_occur": "An error occurred"
+        "page_not_found": "Page not found",
+        "error_occur": "An error occurred",
+        "congratulation": "Congratulations you have ordered ticket successfully"
     },
     "validation_error": {
         "username": {
@@ -60,7 +72,7 @@
             "too_short": "Password length must be at least 5 characters.",
             "too_long": "Password length must not exceed 20 characters.",
             "null": "Password must not be null.",
-            "confirm": "Please confirm your password!",
+            "confirm": "Please confirm your password",
             "not_match": "Password not match"
         },
         "fullname_null": "Fullname must not be null",
@@ -68,9 +80,14 @@
     },
     "error": {
         "not_found_film": "Not found any film with name is ",
-        "not_found_page": "Sorry, the page you're looking for does not exist!",
-        "login_failed": "Username or password is incorrect!",
-        "incorrect_old_password": "Old password ís incorrect"
+        "not_found_page": "Sorry, the page you're looking for does not exist",
+        "login_failed": "Username or password is incorrect",
+        "incorrect_old_password": "Old password ís incorrect",
+        "not_select_ticket": "Please choose ticket",
+        "not_select_enough_ticket": "Please choose enough tickets you ordered",
+        "select_over_ticket": "You have chosen over the number of ordered tickets",
+        "payment_lost_info": "Please input full payment information",
+        "choose_selected_seat": "The seat you booked have already selected"
     },
     "placeholder": {
         "username": "Username",
@@ -86,7 +103,22 @@
         "password": "Password",
         "old_pass": "Old password",
         "new_pass": "New password",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "cinema": "Cinema",
+        "screening": "Screening",
+        "combo": "Combo",
+        "seat": "Seat",
+        "total": "Total",
+        "ticket_type": "Ticket type",
+        "quantity": "Quantity",
+        "price": "Price (VND)",
+        "total_price": "Total (VND)",
+        "selecting_seat": "Selecting seats",
+        "sold_seat": "Sold seats",
+        "selectable_seat": "Selectable seats",
+        "unselectable_seat": "Unselectable seats",
+        "screen": "Screen",
+        "payment_type": "Select payment type"
     },
     "movie_title": {
         "category": "Category",
@@ -95,6 +127,15 @@
         "director": "Director",
         "actors": "Actors",
         "published_date": "Published date"
+    },
+    "day_of_week": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
     },
     "header": {
         "top_header": {

@@ -1167,30 +1167,346 @@
       "cityId": 3
     }
   ],
-  "schedules": [
+  "rooms": [
     {
       "id": 1,
+      "name": "1A",
+      "cinemaId": 1,
+      "seats": [
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "name": "1B",
+      "cinemaId": 1
+    },
+    {
+      "id": 3,
+      "name": "2A",
+      "cinemaId": 1
+    }
+  ],
+  "schedules": [
+    {
       "movieId": 1,
       "cinemaId": 1,
-      "date": 1619868600000
+      "roomId": 1,
+      "date": 1622561400000,
+      "roomSeats": {
+        "unselectableSeats": [
+          {
+            "seat": "H1"
+          },
+          {
+            "seat": "H2"
+          },
+          {
+            "seat": "H3"
+          },
+          {
+            "seat": "H4"
+          },
+          {
+            "seat": "H5"
+          },
+          {
+            "seat": "H6"
+          },
+          {
+            "seat": "H7"
+          },
+          {
+            "seat": "H8"
+          },
+          {
+            "seat": "H9"
+          },
+          {
+            "seat": "H10"
+          },
+          {
+            "seat": "H11"
+          },
+          {
+            "seat": "H12"
+          },
+          {
+            "seat": "H13"
+          },
+          {
+            "seat": "H14"
+          }
+        ],
+        "soldSeats": [
+          {
+            "seat": "A5",
+            "userId": 1
+          },
+          {
+            "seat": "A6",
+            "userId": 1
+          },
+          {
+            "seat": "A7",
+            "userId": 1
+          },
+          {
+            "seat": "B11",
+            "userId": 1
+          },
+          {
+            "seat": "B12",
+            "userId": 1
+          },
+          {
+            "seat": "A4",
+            "userId": 1
+          }
+        ],
+        "isSelectingSeats": [
+          {
+            "seat": "A3",
+            "userId": 1
+          },
+          {
+            "seat": "B7",
+            "userId": 1
+          },
+          {
+            "seat": "B8",
+            "userId": 1
+          },
+          {
+            "seat": "C5",
+            "userId": 1
+          }
+        ]
+      },
+      "id": 1
     },
     {
       "id": 2,
       "movieId": 1,
       "cinemaId": 7,
+      "roomId": 2,
       "date": 1619874000000
     },
     {
       "id": 3,
       "movieId": 1,
       "cinemaId": 7,
+      "roomId": 2,
       "date": 1619881200000
     },
     {
       "id": 4,
       "movieId": 1,
       "cinemaId": 8,
+      "roomId": 3,
       "date": 1619881200000
     }
-  ]
+  ],
+  "ticketTypes": [
+    {
+      "id": 1,
+      "name": "Người lớn",
+      "unitPrice": 85000
+    },
+    {
+      "id": 2,
+      "name": "Trẻ em",
+      "unitPrice": 75000
+    },
+    {
+      "id": 3,
+      "name": "Thành viên",
+      "unitPrice": 70000
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "iCombo 1 Big",
+      "description": "1 Bắp + 1 Nước ngọt",
+      "img": "https://www.galaxycine.vn/media/2021/4/7/combo1_1617790472299.jpg",
+      "unitPrice": 45000
+    },
+    {
+      "id": 2,
+      "name": "iCombo 2 Big",
+      "description": "1 Bắp + 2 Nước ngọt",
+      "img": "https://www.galaxycine.vn/media/2021/4/7/combo2_1617790465669.jpg",
+      "unitPrice": 65000
+    },
+    {
+      "id": 3,
+      "name": "iCombo Family Big",
+      "description": "2 Bắp + 4 Nước ngọt + 2 Snack",
+      "img": "https://www.galaxycine.vn/media/2021/4/7/f2_1617790556406.jpg",
+      "unitPrice": 150000
+    }
+  ],
+  "orders": []
 }
