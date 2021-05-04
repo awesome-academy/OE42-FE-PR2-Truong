@@ -16,7 +16,8 @@
             "accept_policy": "I have read and agree to the program policy.",
             "language": "Language: ",
             "personal_info": "Personal info",
-            "change_password": "Change password"
+            "change_password": "Change password",
+            "schedule": "Cinema schedule"
         },
         "button_title": {
             "detail": "Detail",
@@ -26,6 +27,10 @@
             "register": "Register",
             "update": "Update"
         }
+    },
+    "select_option": {
+        "all_cities": "All cities",
+        "all_cinemas": "All cinemas"
     },
     "unit": {
         "minute": "minute",

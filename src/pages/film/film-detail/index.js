@@ -12,11 +12,22 @@ import { useTranslation } from "react-i18next";
 import RatingFilm from "../../../components/rating-film";
 import { getAverageRating } from "../../../utils/getAverageRating";
 import { FILM_PAGE_PATH } from "../../../constants/routes";
+import {
+  getAllCities,
+  getAllCinemas,
+  getAllSchedules,
+} from "../../../reducers/cinema";
+import Schedule from "../../../components/schedule";
+import moment from "moment";
 
 function FilmDetail(props) {
+  const [selectedCityId, setSelectedCityId] = useState(0);
+  const [selectedCinemaId, setSelectedCinemaId] = useState(0);
+  const [date, setDate] = useState("");
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { playingMovies, selectedMovie } = useSelector((state) => state.film);
+  const { cities, cinemas, schedules } = useSelector((state) => state.cinema);
   const { token } = useSelector((state) => state.auth);
   const { filmId } = useParams();
   const { t } = useTranslation();
@@ -28,7 +39,34 @@ function FilmDetail(props) {
   useEffect(() => {
     dispatch(getDetailMovie(filmId));
     dispatch(getPlayingHottestMovies({ limit: 3 }));
+    dispatch(getAllCities());
+    dispatch(getAllCinemas());
+    dispatch(getAllSchedules(filmId));
   }, [dispatch, filmId]);
+
+  const displayCinemas =
+    selectedCityId === 0
+      ? cinemas
+      : cinemas.filter((cinema) => cinema.cityId === selectedCityId);
+
+  const displaySchedules = displayCinemas
+    .map((cinema) => {
+      const { id, name } = cinema;
+      const filterSchedules = schedules.filter(
+        (schedule) =>
+          (date.length
+            ? schedule.date >= moment(date, "YYYY:MM:DD").valueOf()
+            : true) && schedule.cinemaId === id
+      );
+      return { id, name, schedules: filterSchedules };
+    })
+    .filter((cinema) => {
+      const { id, schedules } = cinema;
+      if (selectedCinemaId !== 0) {
+        return id === selectedCinemaId && schedules.length;
+      }
+      return schedules.length;
+    });
 
   return (
     <main className="film-detail-container">
@@ -56,10 +94,7 @@ function FilmDetail(props) {
               <span>/10 ({selectedMovie.ratings?.length || 0})</span>
             </div>
             {token && (
-              <RatingFilm
-                movie={selectedMovie}
-                from={FILM_PAGE_PATH}
-              />
+              <RatingFilm movie={selectedMovie} from={FILM_PAGE_PATH} />
             )}
             <div className="time">
               <i className="fa fa-clock-o"></i>
@@ -98,6 +133,43 @@ function FilmDetail(props) {
         </article>
         <div className="main-title">{t("common.list_title.movie_content")}</div>
         <p className="summary">{selectedMovie.summary}</p>
+        <div className="main-title">{t("common.list_title.schedule")}</div>
+        <div className="select-cinema-container">
+          <select
+            value={selectedCityId}
+            onChange={(e) => setSelectedCityId(+e.target.value)}
+          >
+            <option value={0}>{t("select_option.all_cities")}</option>
+            {cities.length &&
+              cities.map((city) => (
+                <option key={city.id} value={city.id}>
+                  {city.name}
+                </option>
+              ))}
+          </select>
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <select
+            value={selectedCinemaId}
+            onChange={(e) => setSelectedCinemaId(+e.target.value)}
+          >
+            <option value={0}>{t("select_option.all_cinemas")}</option>
+            {displayCinemas.length &&
+              displayCinemas.map((cinema) => (
+                <option key={cinema.id} value={cinema.id}>
+                  {cinema.name}
+                </option>
+              ))}
+          </select>
+        </div>
+        {displaySchedules.length !== 0 &&
+          displaySchedules.map((schedule) => {
+            const { id, ...restProps } = schedule;
+            return <Schedule key={id} {...restProps} />;
+          })}
       </section>
       <section className="sub-content-container">
         <AdditionalFilmList movies={playingMovies} />

@@ -16,7 +16,8 @@
             "accept_policy": "Tôi đã đọc và đồng ý với chính sách của chương trình.",
             "language": "Ngôn ngữ: ",
             "personal_info": "Thông tin cá nhân",
-            "change_password": "Đổi mật khẩu"
+            "change_password": "Đổi mật khẩu",
+            "schedule": "Lịch chiếu"
         },
         "button_title": {
             "detail": "Chi tiết",
@@ -26,6 +27,10 @@
             "register": "Đăng ký",
             "update": "Cập nhật"
         }
+    },
+    "select_option": {
+        "all_cities": "Cả nước",
+        "all_cinemas": "Tất cả rạp"
     },
     "unit": {
         "minute": "phút",

@@ -17,13 +17,24 @@ function RatingFilm({ movie, from }) {
 
   const handleRating = (ratingNum) => {
     const editMovie = { ...movie };
+    let isEdited = false;
     editMovie.ratings = editMovie.ratings?.map((ratingItem) => {
       const { accountId } = ratingItem;
       if (accountId === user.id) {
+        isEdited = true;
         return { accountId, rating: ratingNum };
       }
       return ratingItem;
     });
+    if (!isEdited) {
+      editMovie.ratings = [
+        ...editMovie.ratings,
+        {
+          accountId: user.id,
+          rating: ratingNum,
+        },
+      ];
+    }
     dispatch(
       putRating({
         movie: editMovie,

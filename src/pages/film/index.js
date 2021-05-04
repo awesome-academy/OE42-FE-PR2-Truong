@@ -14,6 +14,7 @@ function FilmPage(props) {
     pendingPlayingMovies: pendingMovies,
     pending: pendingDetailMovie,
   } = useSelector((state) => state.film);
+  const { pendingCity, pendingCinema } = useSelector((state) => state.cinema);
 
   return (
     <div className="film-page-container">
@@ -29,7 +30,10 @@ function FilmPage(props) {
         </Switch>
         <Footer />
       </div>
-      {(pendingMovies || pendingDetailMovie) && <PendingSpinner />}
+      {(pendingMovies ||
+        pendingDetailMovie ||
+        pendingCity ||
+        pendingCinema) && <PendingSpinner />}
     </div>
   );
 }

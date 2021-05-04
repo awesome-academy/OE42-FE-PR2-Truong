@@ -41,12 +41,12 @@
       "publishedDate": "14/4/2021",
       "ratings": [
         {
-          "accountId": 1,
-          "rating": 9
-        },
-        {
           "accountId": 2,
           "rating": 8
+        },
+        {
+          "accountId": 1,
+          "rating": 9
         }
       ],
       "status": "PLAYING",
@@ -1104,6 +1104,93 @@
       "fullName": "Lê Anh Tuấn",
       "address": "ha tinh",
       "role": "admin"
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "name": "Hà Nội"
+    },
+    {
+      "id": 2,
+      "name": "Đà Nẵng"
+    },
+    {
+      "id": 3,
+      "name": "TP. Hồ Chí Minh"
+    }
+  ],
+  "cinemas": [
+    {
+      "id": 1,
+      "name": "Galaxy Thanh Trì",
+      "cityId": 1
+    },
+    {
+      "id": 2,
+      "name": "Galaxy Ba Đình",
+      "cityId": 1
+    },
+    {
+      "id": 3,
+      "name": "Galaxy Mê Linh",
+      "cityId": 1
+    },
+    {
+      "id": 4,
+      "name": "Galaxy Thanh Khê",
+      "cityId": 2
+    },
+    {
+      "id": 5,
+      "name": "Galaxy Sơn Trà",
+      "cityId": 2
+    },
+    {
+      "id": 6,
+      "name": "Galaxy Hải Châu",
+      "cityId": 2
+    },
+    {
+      "id": 7,
+      "name": "Galaxy Thủ Đức",
+      "cityId": 3
+    },
+    {
+      "id": 8,
+      "name": "Galaxy Tân Cảng",
+      "cityId": 3
+    },
+    {
+      "id": 9,
+      "name": "Galaxy Quận 1",
+      "cityId": 3
+    }
+  ],
+  "schedules": [
+    {
+      "id": 1,
+      "movieId": 1,
+      "cinemaId": 1,
+      "date": 1619868600000
+    },
+    {
+      "id": 2,
+      "movieId": 1,
+      "cinemaId": 7,
+      "date": 1619874000000
+    },
+    {
+      "id": 3,
+      "movieId": 1,
+      "cinemaId": 7,
+      "date": 1619881200000
+    },
+    {
+      "id": 4,
+      "movieId": 1,
+      "cinemaId": 8,
+      "date": 1619881200000
     }
   ]
 }
