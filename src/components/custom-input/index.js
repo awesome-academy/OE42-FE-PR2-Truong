@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./style.sass";
 
-function CustomInput({ field, type, icon, ...props }) {
+function CustomInput({ innerRef, field, type, icon, ...props }) {
   const [showPass, setShowPass] = useState(false);
-
+  
   return (
     <div className="custom-input-container">
       {type === "password" && (
@@ -13,6 +13,7 @@ function CustomInput({ field, type, icon, ...props }) {
         ></i>
       )}
       <input
+        ref={innerRef ? innerRef : null}
         type={type === "password" ? (showPass ? "text" : "password") : type}
         autoComplete="off"
         {...field}

@@ -1088,13 +1088,13 @@
   ],
   "accounts": [
     {
-      "password": "123456",
-      "fullName": "Nguyễn Đình Trường",
-      "address": "898 Trần Cao Vân",
+      "id": 1,
       "username": "truongpro",
-      "role": "user",
+      "password": "123456",
       "token": "secret-token",
-      "id": 1
+      "fullName": "Nguyễn Đình Trường",
+      "address": "k120/09 Nguyễn Lương Bằng",
+      "role": "user"
     },
     {
       "id": 2,
