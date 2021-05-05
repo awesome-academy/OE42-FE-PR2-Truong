@@ -9,9 +9,6 @@ export const cinemaSlice = createSlice({
     cinemas: [],
     pendingCinema: false,
     errorCinema: null,
-    schedules: [],
-    pendingSchedule: false,
-    errorSchedule: null,
   },
   reducers: {
     getAllCities: (state) => {
@@ -40,19 +37,6 @@ export const cinemaSlice = createSlice({
       state.pendingCinema = false;
       state.errorCinema = action.payload;
     },
-    getAllSchedules: (state) => {
-      state.pendingSchedule = true;
-      state.errorSchedule = null;
-    },
-    getAllSchedulesSuccess: (state, action) => {
-      state.schedules = action.payload;
-      state.pendingSchedule = false;
-      state.errorSchedule = null;
-    },
-    getAllSchedulesFailed: (state, action) => {
-      state.pendingSchedule = false;
-      state.errorSchedule = action.payload;
-    },
   },
 });
 
@@ -63,9 +47,6 @@ export const {
   getAllCinemas,
   getAllCinemasSuccess,
   getAllCinemasFailed,
-  getAllSchedules,
-  getAllSchedulesSuccess,
-  getAllSchedulesFailed,
 } = cinemaSlice.actions;
 
 export default cinemaSlice.reducer;

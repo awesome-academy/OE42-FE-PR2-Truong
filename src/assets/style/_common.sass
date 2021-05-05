@@ -61,6 +61,17 @@
             visibility: visible
             opacity: 1
 
+%custom-scroll-bar
+    overflow-x: auto
+    &::-webkit-scrollbar
+        border-radius: 10px
+        height: 0.5rem
+    &::-webkit-scrollbar-thumb
+        background: #999
+        border-radius: 0.5rem
+    &::-webkit-scrollbar-track
+        border-radius: 0.5rem
+
 @mixin link-style($normalColor, $hoverColor)
     text-decoration: none
     &:link, &:visited

@@ -43,32 +43,7 @@ export function* getAllCinemas() {
   }
 }
 
-const getAllSchedulesApi = (movieId, currentTime) =>
-  axios.get(
-    `${
-      apiUrl.BASE_URL + apiUrl.API_SCHEDULE
-    }?movieId=${movieId}&date_gte=${currentTime}&_expand=cinema`
-  );
-
-export function* getAllSchedules(action) {
-  const translation = getTranslation();
-  const errorMessage = translation.notification?.error_occur;
-  try {
-    const response = yield call(getAllSchedulesApi, action.payload, Date.now());
-    if (response.statusText === "OK") {
-      yield put(cinemaAction.getAllSchedulesSuccess(response.data));
-    } else {
-      yield put(cinemaAction.getAllSchedulesFailed(errorMessage));
-      toast.error(errorMessage);
-    }
-  } catch {
-    yield put(cinemaAction.getAllSchedulesFailed(errorMessage));
-    toast.error(errorMessage);
-  }
-}
-
 export function* watcherCinema() {
   yield takeEvery(cinemaAction.getAllCities, getAllCities);
   yield takeEvery(cinemaAction.getAllCinemas, getAllCinemas);
-  yield takeEvery(cinemaAction.getAllSchedules, getAllSchedules);
 }

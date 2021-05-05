@@ -4,7 +4,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: {},
-    token: "",
+    token: localStorage.getItem("token"),
     pending: false,
     error: null,
   },

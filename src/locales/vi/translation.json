@@ -17,7 +17,11 @@
             "language": "Ngôn ngữ: ",
             "personal_info": "Thông tin cá nhân",
             "change_password": "Đổi mật khẩu",
-            "schedule": "Lịch chiếu"
+            "schedule": "Lịch chiếu",
+            "ticket_and_food": "Chọn vé / Thức ăn",
+            "choose_seat": "Chọn ghế",
+            "payment": "Thanh toán",
+            "back_to_homepage": "Trở về trang chủ"
         },
         "button_title": {
             "detail": "Chi tiết",
@@ -25,12 +29,18 @@
             "evaluate": "Đánh giá",
             "login": "Đăng nhập",
             "register": "Đăng ký",
-            "update": "Cập nhật"
+            "update": "Cập nhật",
+            "next": "Tiếp tục",
+            "prev": "Quay lại",
+            "payment": "Thanh toán",
+            "cancel": "Hủy bỏ"
         }
     },
     "select_option": {
         "all_cities": "Cả nước",
-        "all_cinemas": "Tất cả rạp"
+        "all_cinemas": "Tất cả rạp",
+        "online_payment": "Thanh toán online",
+        "offline_payment": "Thanh toán tại quầy"
     },
     "unit": {
         "minute": "phút",
@@ -46,7 +56,9 @@
         "account_exists": "Tài khoản đã tồn tại",
         "invalid_token": "Token không hợp lệ",
         "invalid_account": "Tên tài khoản hoặc mật khẩu không đúng",
-        "error_occur": "Đã xảy ra lỗi"
+        "page_not_found": "Không tìm thấy trang",
+        "error_occur": "Đã xảy ra lỗi",
+        "congratulation": "Chúc mừng bạn đã đặt vé thành công"
     },
     "validation_error": {
         "username": {
@@ -60,7 +72,7 @@
             "too_short": "Mật khẩu phải có ít nhất 5 ký tự.",
             "too_long": "Mật khẩu không được vượt quá 20 ký tự.",
             "null": "Mật khẩu không được để trống.",
-            "confirm": "Vui lòng xác thực lại mật khẩu!",
+            "confirm": "Vui lòng xác thực lại mật khẩu",
             "not_match": "Mật khẩu không khớp"
         },
         "fullname_null": "Họ tên không được để trống",
@@ -68,9 +80,14 @@
     },
     "error": {
         "not_found_film": "Không tìm thấy phim nào tương ứng với ",
-        "not_found_page": "Xin lỗi, trang web bạn đang tìm kiếm không tồn tại!",
-        "login_failed": "Tài khoản hoặc mật khẩu không đúng!",
-        "incorrect_old_password": "Mật khẩu cũ không đúng"
+        "not_found_page": "Xin lỗi, trang web bạn đang tìm kiếm không tồn tại",
+        "login_failed": "Tài khoản hoặc mật khẩu không đúng",
+        "incorrect_old_password": "Mật khẩu cũ không đúng",
+        "not_select_ticket": "Vui lòng chọn vé",
+        "not_select_enough_ticket": "Vui lòng chọn đủ số vé đã đặt",
+        "select_over_ticket": "Bạn đã chọn quá số vé đã đặt mua",
+        "payment_lost_info": "Vui lòng chọn đầy đủ thông tin thanh toán",
+        "choose_selected_seat": "Ghế bạn đặt đã được chọn"
     },
     "placeholder": {
         "username": "Username",
@@ -86,7 +103,22 @@
         "password": "Mật khẩu",
         "old_pass": "Mật khẩu cũ",
         "new_pass": "Mật khẩu mới",
-        "confirm": "Xác thực"
+        "confirm": "Xác thực",
+        "cinema": "Rạp",
+        "screening": "Suất chiếu",
+        "combo": "Combo",
+        "seat": "Ghế",
+        "total": "Tổng",
+        "ticket_type": "Loại vé",
+        "quantity": "Số lượng",
+        "price": "Giá (VNĐ)",
+        "total_price": "Tổng (VNĐ)",
+        "selecting_seat": "Ghế đang chọn",
+        "sold_seat": "Ghế đã bán",
+        "selectable_seat": "Có thể chọn",
+        "unselectable_seat": "Không thể chọn",
+        "screen": "Màn hình",
+        "payment_type": "Chọn phương thức thanh toán"
     },
     "movie_title": {
         "category": "Thể loại",
@@ -95,6 +127,15 @@
         "director": "Đạo diễn",
         "actors": "Diễn viên",
         "published_date": "Ngày phát hành"
+    },
+    "day_of_week": {
+        "monday": "Thứ 2",
+        "tuesday": "Thứ 3",
+        "wednesday": "Thứ 4",
+        "thursday": "Thứ 5",
+        "friday": "Thứ 6",
+        "saturday": "Thứ 7",
+        "sunday": "Chủ nhật"
     },
     "header": {
         "top_header": {

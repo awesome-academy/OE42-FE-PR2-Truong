@@ -12,11 +12,8 @@ import { useTranslation } from "react-i18next";
 import RatingFilm from "../../../components/rating-film";
 import { getAverageRating } from "../../../utils/getAverageRating";
 import { FILM_PAGE_PATH } from "../../../constants/routes";
-import {
-  getAllCities,
-  getAllCinemas,
-  getAllSchedules,
-} from "../../../reducers/cinema";
+import { getAllCities, getAllCinemas } from "../../../reducers/cinema";
+import { getAllSchedules } from "../../../reducers/schedule";
 import Schedule from "../../../components/schedule";
 import moment from "moment";
 
@@ -27,7 +24,8 @@ function FilmDetail(props) {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { playingMovies, selectedMovie } = useSelector((state) => state.film);
-  const { cities, cinemas, schedules } = useSelector((state) => state.cinema);
+  const { cities, cinemas } = useSelector((state) => state.cinema);
+  const { schedules } = useSelector((state) => state.schedule);
   const { token } = useSelector((state) => state.auth);
   const { filmId } = useParams();
   const { t } = useTranslation();
