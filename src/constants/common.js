@@ -1,0 +1,1 @@
+export const ORDER_COUNTDOWN_SECONDS = 120;

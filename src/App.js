@@ -16,6 +16,7 @@ import { getUserInfo } from "./reducers/auth";
 import PrivateRoute from "./routes/privateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OrderTicketPage from "./pages/order-ticket";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -58,6 +59,11 @@ function App(props) {
           <PrivateRoute
             path={routePath.PERSONAL_PAGE_PATH}
             component={PersonalInfoPage}
+          />
+          <PrivateRoute
+            exact
+            path={routePath.ORDER_TICKET_PAGE_PATH + "/:scheduleId"}
+            component={OrderTicketPage}
           />
           <Route component={NotFoundPage} />
         </Switch>
