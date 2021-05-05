@@ -7,6 +7,7 @@ import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
 import { setSelectedSeats } from "../reducers/order";
 import { ORDER_PAGE_STATES } from "../constants/orderTicket";
+import { ORDER_COUNTDOWN_SECONDS } from "../constants/common";
 
 const getAllSchedulesApi = (movieId, currentTime) =>
   axios.get(
@@ -154,7 +155,7 @@ export function* putSelectingSeats(action) {
           yield put(orderAction.setPageState(ORDER_PAGE_STATES.ORDER_PAYMENT));
           yield put(
             orderAction.runCountdown({
-              timeLeft: 60,
+              timeLeft: ORDER_COUNTDOWN_SECONDS,
               scheduleId,
               selectedSeats,
             })

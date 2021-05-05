@@ -9,3 +9,6 @@ export const API_AUTH = "/accounts";
 export const API_CITY = "/cities";
 export const API_CINEMA = "/cinemas";
 export const API_SCHEDULE = "/schedules";
+export const API_TICKET_TYPE = "/ticketTypes";
+export const API_SERVICE = "/services";
+export const API_ORDER = "/orders";

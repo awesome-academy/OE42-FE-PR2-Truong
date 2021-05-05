@@ -6,6 +6,7 @@ import { watcherBlog } from "./blog";
 import { watcherFilm } from "./film";
 import { watcherAuth } from "./auth";
 import { watcherCinema } from "./cinema";
+import { watcherOrder } from "./order";
 import { watcherSchedule } from "./schedule";
 
 export default function* watcherSaga() {
@@ -17,6 +18,7 @@ export default function* watcherSaga() {
     watcherFilm(),
     watcherAuth(),
     watcherCinema(),
+    watcherOrder(),
     watcherSchedule(),
   ]);
 }

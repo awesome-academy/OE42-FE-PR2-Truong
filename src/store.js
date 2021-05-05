@@ -10,6 +10,7 @@ import blogReducer from "./reducers/blog";
 import filmReducer from "./reducers/film";
 import authReducer from "./reducers/auth";
 import cinemaReducer from "./reducers/cinema";
+import orderReducer from "./reducers/order";
 import scheduleReducer from "./reducers/schedule";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   film: filmReducer,
   auth: authReducer,
   cinema: cinemaReducer,
+  order: orderReducer,
   schedule: scheduleReducer,
 });
 

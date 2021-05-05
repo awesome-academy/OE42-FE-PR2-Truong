@@ -6,3 +6,4 @@ export const FILM_PAGE_PATH = "/film";
 export const LOGIN_PAGE_PATH = "/login";
 export const REGISTER_PAGE_PATH = "/register";
 export const PERSONAL_PAGE_PATH = "/personal";
+export const ORDER_TICKET_PAGE_PATH = "/order-ticket";
