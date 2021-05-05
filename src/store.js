@@ -12,6 +12,7 @@ import authReducer from "./reducers/auth";
 import cinemaReducer from "./reducers/cinema";
 import orderReducer from "./reducers/order";
 import scheduleReducer from "./reducers/schedule";
+import feedbackReducer from "./reducers/feedback";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   cinema: cinemaReducer,
   order: orderReducer,
   schedule: scheduleReducer,
+  feedback: feedbackReducer,
 });
 
 const store = configureStore({

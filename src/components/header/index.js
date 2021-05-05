@@ -134,12 +134,14 @@ function Header(props) {
               </>
             )}
             <li>
-              <Link to="/member-card">
-                {t("header.top_header.member_card")}
+              <Link
+                to={{
+                  pathname: routePath.SUPPORT_PAGE_PATH,
+                  state: { from: location },
+                }}
+              >
+                {t("header.top_header.support")}
               </Link>
-            </li>
-            <li>
-              <Link to="/support">{t("header.top_header.support")}</Link>
             </li>
             <li>
               <select value={language} onChange={changeLanguage}>
