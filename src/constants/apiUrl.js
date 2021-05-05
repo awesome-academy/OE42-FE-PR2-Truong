@@ -12,3 +12,4 @@ export const API_SCHEDULE = "/schedules";
 export const API_TICKET_TYPE = "/ticketTypes";
 export const API_SERVICE = "/services";
 export const API_ORDER = "/orders";
+export const API_FEEDBACK = "/feedbacks";

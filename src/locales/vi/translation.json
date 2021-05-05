@@ -21,7 +21,8 @@
             "ticket_and_food": "Chọn vé / Thức ăn",
             "choose_seat": "Chọn ghế",
             "payment": "Thanh toán",
-            "back_to_homepage": "Trở về trang chủ"
+            "back_to_homepage": "Trở về trang chủ",
+            "feedback_question": "Bạn có gì muốn nhắn nhủ tới chúng tôi?"
         },
         "button_title": {
             "detail": "Chi tiết",
@@ -33,7 +34,8 @@
             "next": "Tiếp tục",
             "prev": "Quay lại",
             "payment": "Thanh toán",
-            "cancel": "Hủy bỏ"
+            "cancel": "Hủy bỏ",
+            "send": "Gửi"
         }
     },
     "select_option": {
@@ -58,7 +60,8 @@
         "invalid_account": "Tên tài khoản hoặc mật khẩu không đúng",
         "page_not_found": "Không tìm thấy trang",
         "error_occur": "Đã xảy ra lỗi",
-        "congratulation": "Chúc mừng bạn đã đặt vé thành công"
+        "congratulation": "Chúc mừng bạn đã đặt vé thành công",
+        "send_feedback_success": "Gửi phản hồi thành công"
     },
     "validation_error": {
         "username": {
@@ -76,7 +79,20 @@
             "not_match": "Mật khẩu không khớp"
         },
         "fullname_null": "Họ tên không được để trống",
-        "address_null": "Địa chỉ không được để trống"
+        "address_null": "Địa chỉ không được để trống",
+        "email": {
+            "null": "Email không được để trống",
+            "invalid": "Email không hợp lệ"
+        },
+        "phone": {
+            "null": "Số điện thoại không được để trống",
+            "invalid": "Số điện thoại không hợp lệ"
+        },
+        "content": {
+            "too_short": "Nội dung phải có ít nhất 20 ký tự",
+            "too_long": "Nội dung không được vượt quá 1000 ký tự",
+            "null": "Nội dung không được để trống"
+        }
     },
     "error": {
         "not_found_film": "Không tìm thấy phim nào tương ứng với ",
@@ -95,6 +111,9 @@
         "confirm_password": "Xác nhận mât khẩu",
         "dob": "Ngày sinh",
         "full_name": "Họ và tên",
+        "email": "Email",
+        "phone": "Số điện thoại",
+        "content": "Nội dung",
         "address": "Địa chỉ"
     },
     "label": {

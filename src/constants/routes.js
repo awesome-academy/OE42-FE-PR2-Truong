@@ -7,3 +7,4 @@ export const LOGIN_PAGE_PATH = "/login";
 export const REGISTER_PAGE_PATH = "/register";
 export const PERSONAL_PAGE_PATH = "/personal";
 export const ORDER_TICKET_PAGE_PATH = "/order-ticket";
+export const SUPPORT_PAGE_PATH = "/support";
