@@ -1,17 +1,24 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import { LOGIN_PAGE_PATH } from "../constants/routes";
+import ErrorPage from "../pages/error-page";
 
-function PrivateRoute({ component: Component, ...restProps }) {
-  const { token } = useSelector((state) => state.auth);
+function PrivateRoute({ component: Component, roles, ...restProps }) {
+  const { token, user } = useSelector((state) => state.auth);
+  const { t } = useTranslation();
 
   return (
     <Route
       {...restProps}
       render={(props) =>
         token ? (
-          <Component {...props} />
+          roles.includes(user.role) ? (
+            <Component {...props} />
+          ) : (
+            <ErrorPage code="403" message={t("error.not_authorized_page")} />
+          )
         ) : (
           <Redirect
             to={{

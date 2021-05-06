@@ -8,3 +8,7 @@ export const REGISTER_PAGE_PATH = "/register";
 export const PERSONAL_PAGE_PATH = "/personal";
 export const ORDER_TICKET_PAGE_PATH = "/order-ticket";
 export const SUPPORT_PAGE_PATH = "/support";
+export const MANAGE_USER_PAGE_PATH = "/manage-user";
+export const MANAGE_MOVIE_PAGE_PATH = "/manage-movie";
+export const MANAGE_REVENUE_PAGE_PATH = "/manage-revenue";
+export const MANAGE_TICKET_PAGE_PATH = "/manage-ticket";

@@ -9,6 +9,7 @@ import { watcherCinema } from "./cinema";
 import { watcherOrder } from "./order";
 import { watcherSchedule } from "./schedule";
 import { watcherFeedback } from "./feedback";
+import { watcherUser } from "./user";
 
 export default function* watcherSaga() {
   yield all([
@@ -22,5 +23,6 @@ export default function* watcherSaga() {
     watcherOrder(),
     watcherSchedule(),
     watcherFeedback(),
+    watcherUser(),
   ]);
 }

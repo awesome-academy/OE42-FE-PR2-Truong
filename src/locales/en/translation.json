@@ -22,7 +22,8 @@
             "choose_seat": "Choose seat",
             "payment": "Payment",
             "back_to_homepage": "Go back to homepage",
-            "feedback_question": "Send us your feedback?"
+            "feedback_question": "Send us your feedback?",
+            "add_user": "Add new user"
         },
         "button_title": {
             "detail": "Detail",
@@ -35,7 +36,9 @@
             "prev": "Previous",
             "payment": "Pay",
             "cancel": "Cancel",
-            "send": "Send"
+            "send": "Send",
+            "add": "Add",
+            "add_user": "Add user"
         }
     },
     "select_option": {
@@ -61,7 +64,10 @@
         "page_not_found": "Page not found",
         "error_occur": "An error occurred",
         "congratulation": "Congratulations you have ordered ticket successfully",
-        "send_feedback_success": "Send feedback successfully"
+        "send_feedback_success": "Send feedback successfully",
+        "add_user_success": "Add new user successfully",
+        "block_user_success": "Blocked user successfully",
+        "activate_user_success": "Activated user successfully"
     },
     "validation_error": {
         "username": {
@@ -97,6 +103,7 @@
     "error": {
         "not_found_film": "Not found any film with name is ",
         "not_found_page": "Sorry, the page you're looking for does not exist",
+        "not_authorized_page": "Sorry, you are not authorized to access this page",
         "login_failed": "Username or password is incorrect",
         "incorrect_old_password": "Old password ís incorrect",
         "not_select_ticket": "Please choose ticket",
@@ -117,6 +124,8 @@
         "address": "Address"
     },
     "label": {
+        "username": "Username",
+        "role": "Role",
         "fullname": "Fullname",
         "address": "Address",
         "password": "Password",
@@ -137,7 +146,13 @@
         "selectable_seat": "Selectable seats",
         "unselectable_seat": "Unselectable seats",
         "screen": "Screen",
-        "payment_type": "Select payment type"
+        "payment_type": "Select payment type",
+        "number_order": "No",
+        "status": "Status",
+        "created_at": "Created at",
+        "action": "Action",
+        "activated": "Activated",
+        "not_activated": "Not activated"
     },
     "movie_title": {
         "category": "Category",
@@ -171,7 +186,11 @@
             "buy_ticket": "Buy Ticket",
             "movie": "Movies",
             "cinema": "Cinema",
-            "promotion": "Promotion"
+            "promotion": "Promotion",
+            "manage_user": "Manage user",
+            "manage_movie": "Manage movie",
+            "manage_revenue": "Manage revenue",
+            "manage_ticket": "Manage ticket"
         }
     },
     "footer": {
