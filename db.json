@@ -1094,7 +1094,9 @@
       "token": "secret-token",
       "fullName": "Nguyễn Đình Trường",
       "address": "k120/09 Nguyễn Lương Bằng",
-      "role": "user"
+      "role": "user",
+      "isActive": true,
+      "createdAt": 1619892720000
     },
     {
       "id": 2,
@@ -1103,7 +1105,9 @@
       "token": "secret-token-2",
       "fullName": "Lê Anh Tuấn",
       "address": "ha tinh",
-      "role": "admin"
+      "role": "admin",
+      "isActive": true,
+      "createdAt": 1620196260000
     }
   ],
   "cities": [

@@ -11,6 +11,8 @@ import CustomInput from "../../components/custom-input";
 import SignUpSchema from "../../validations/signUpSchema";
 import { postSignUp } from "../../reducers/auth";
 import ToggleLanguageButton from "../../components/toggle-language-button";
+import { ROLES, TOKEN_LENGTH } from "../../constants/common";
+import { getRandomString } from "../../utils/getRandomString";
 
 function RegisterPage(props) {
   const history = useHistory();
@@ -55,7 +57,14 @@ function RegisterPage(props) {
             validationSchema={SignUpSchema}
             onSubmit={(values) => {
               const { confirmPassword, ...restProps } = values;
-              dispatch(postSignUp({ ...restProps }));
+              dispatch(
+                postSignUp({
+                  ...restProps,
+                  token: getRandomString(TOKEN_LENGTH),
+                  role: ROLES.USER,
+                  createdAt: Date.now(),
+                })
+              );
             }}
           >
             {({ handleSubmit, errors, touched }) => (

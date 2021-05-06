@@ -13,6 +13,7 @@ import cinemaReducer from "./reducers/cinema";
 import orderReducer from "./reducers/order";
 import scheduleReducer from "./reducers/schedule";
 import feedbackReducer from "./reducers/feedback";
+import userReducer from "./reducers/user";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   order: orderReducer,
   schedule: scheduleReducer,
   feedback: feedbackReducer,
+  user: userReducer,
 });
 
 const store = configureStore({

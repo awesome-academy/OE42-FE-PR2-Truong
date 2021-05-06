@@ -2,7 +2,6 @@ import { takeEvery, put, call } from "redux-saga/effects";
 import * as authAction from "../reducers/auth";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
-import { getRandomString } from "../utils/getRandomString";
 import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
 
@@ -91,10 +90,7 @@ export function* postSignUp(action) {
         );
         toast.error(translation.notification?.account_exists);
       } else {
-        const user = action.payload;
-        user.token = getRandomString(15);
-        user.role = "user";
-        const responsePost = yield call(postUserApi, user);
+        const responsePost = yield call(postUserApi, action.payload);
         if (responsePost.statusText === "Created") {
           const { token, password, ...restProps } = responsePost.data;
           localStorage.setItem("token", token);

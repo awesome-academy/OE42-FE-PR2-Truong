@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import * as routePath from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../reducers/auth";
+import { ROLES } from "../../constants/common";
 
 function Header(props) {
   const [language, setLanguage] = useState("vi");
@@ -18,7 +19,7 @@ function Header(props) {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  const { token, user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setLanguage(localStorage.getItem("i18nextLng"));
@@ -166,25 +167,71 @@ function Header(props) {
             <i className="fa fa-bars"></i>
           </button>
         )}
-        {showBottomMenu && (
-          <ul>
-            <li>
-              <Link to="/gift">{t("header.bottom_header.gift_shop")}</Link>
-            </li>
-            <li>
-              <Link to="/ticket">{t("header.bottom_header.buy_ticket")}</Link>
-            </li>
-            <li>
-              <Link to="/film">{t("header.bottom_header.movie")}</Link>
-            </li>
-            <li>
-              <Link to="/cinema">{t("header.bottom_header.cinema")}</Link>
-            </li>
-            <li>
-              <Link to="/promotion">{t("header.bottom_header.promotion")}</Link>
-            </li>
-          </ul>
-        )}
+        {showBottomMenu &&
+          (user.role === ROLES.ADMIN ? (
+            <ul>
+              <li>
+                <Link
+                  to={{
+                    pathname: routePath.MANAGE_USER_PAGE_PATH,
+                    state: { from: location },
+                  }}
+                >
+                  {t("header.bottom_header.manage_user")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={{
+                    pathname: routePath.MANAGE_MOVIE_PAGE_PATH,
+                    state: { from: location },
+                  }}
+                >
+                  {t("header.bottom_header.manage_movie")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={{
+                    pathname: routePath.MANAGE_REVENUE_PAGE_PATH,
+                    state: { from: location },
+                  }}
+                >
+                  {t("header.bottom_header.manage_revenue")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={{
+                    pathname: routePath.MANAGE_TICKET_PAGE_PATH,
+                    state: { from: location },
+                  }}
+                >
+                  {t("header.bottom_header.manage_ticket")}
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li>
+                <Link to="/gift">{t("header.bottom_header.gift_shop")}</Link>
+              </li>
+              <li>
+                <Link to="/ticket">{t("header.bottom_header.buy_ticket")}</Link>
+              </li>
+              <li>
+                <Link to="/film">{t("header.bottom_header.movie")}</Link>
+              </li>
+              <li>
+                <Link to="/cinema">{t("header.bottom_header.cinema")}</Link>
+              </li>
+              <li>
+                <Link to="/promotion">
+                  {t("header.bottom_header.promotion")}
+                </Link>
+              </li>
+            </ul>
+          ))}
       </nav>
     </header>
   );
