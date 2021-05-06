@@ -23,7 +23,9 @@
             "payment": "Thanh toán",
             "back_to_homepage": "Trở về trang chủ",
             "feedback_question": "Bạn có gì muốn nhắn nhủ tới chúng tôi?",
-            "add_user": "Thêm mới người dùng"
+            "add_user": "Thêm mới người dùng",
+            "add_movie": "Thêm mới phim",
+            "edit_movie": "Sửa thông tin phim"
         },
         "button_title": {
             "detail": "Chi tiết",
@@ -38,14 +40,21 @@
             "cancel": "Hủy bỏ",
             "send": "Gửi",
             "add": "Thêm",
-            "add_user": "Thêm người dùng"
+            "edit": "Sửa",
+            "add_user": "Thêm người dùng",
+            "add_movie": "Thêm phim",
+            "back": "Trở về"
         }
     },
     "select_option": {
         "all_cities": "Cả nước",
         "all_cinemas": "Tất cả rạp",
         "online_payment": "Thanh toán online",
-        "offline_payment": "Thanh toán tại quầy"
+        "offline_payment": "Thanh toán tại quầy",
+        "all": "Tất cả",
+        "cancelled": "Đã hủy chiếu",
+        "playing": "Đang chiếu",
+        "ongoing": "Sắp chiếu"
     },
     "unit": {
         "minute": "phút",
@@ -67,7 +76,9 @@
         "send_feedback_success": "Gửi phản hồi thành công",
         "add_user_success": "Thêm mới người dùng thành công",
         "block_user_success": "Khóa người dùng thành công",
-        "activate_user_success": "Kích hoạt người dùng thành công"
+        "activate_user_success": "Kích hoạt người dùng thành công",
+        "add_movie_success": "Thêm mới phim thành công",
+        "edit_movie_success": "Cập nhật phim thành công"
     },
     "validation_error": {
         "username": {
@@ -98,6 +109,27 @@
             "too_short": "Nội dung phải có ít nhất 20 ký tự",
             "too_long": "Nội dung không được vượt quá 1000 ký tự",
             "null": "Nội dung không được để trống"
+        },
+        "movie": {
+            "name_null": "Tên phim không được để trống",
+            "image_null": "Hình ảnh không được để trống",
+            "trailer_null": "Giới thiệu không được để trống",
+            "summary": {
+                "null": "Tóm tắt không được để trống",
+                "too_short": "Tóm tắt phải có ít nhất 50 ký tự",
+                "too_long": "Tóm tắt không được vượt quá 1000 ký tự"
+            },
+            "runtime": {
+                "null": "Thời lượng không được để trống",
+                "invalid": "Thời lượng phải là một số nguyên"
+            },
+            "category_null": "Thể loại không được để trống",
+            "nation_null": "Quốc gia không được để trống",
+            "producer_null": "Nhà sản xuất không được để trống",
+            "director_null": "Đạo diễn không được để trống",
+            "actors_null": "Diễn viên không được để trống",
+            "published_date_null": "Ngày phát hành không được để trống",
+            "status_null": "Trạng thái không được để trống"
         }
     },
     "error": {
@@ -155,12 +187,26 @@
         "not_activated": "Chưa kích hoạt"
     },
     "movie_title": {
+        "movie_name": "Tên phim",
+        "trailer_link": "Giới thiệu (link youtube)",
+        "name": "Tên",
+        "image": "Hình ảnh",
+        "trailer": "Giới thiệu",
+        "summary": "Tóm tắt",
+        "runtime": "Thời lượng",
         "category": "Thể loại",
         "nation": "Quốc gia",
         "producer": "Nhà sản xuất",
         "director": "Đạo diễn",
         "actors": "Diễn viên",
-        "published_date": "Ngày phát hành"
+        "published_date": "Ngày phát hành",
+        "rating": "Đánh giá",
+        "status": "Trạng thái"
+    },
+    "movie_status": {
+        "cancelled": "Đã hủy chiếu",
+        "playing": "Đang chiếu",
+        "ongoing": "Sắp chiếu"
     },
     "day_of_week": {
         "monday": "Thứ 2",

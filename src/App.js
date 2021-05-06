@@ -21,6 +21,7 @@ import OrderTicketPage from "./pages/order-ticket";
 import SupportPage from "./pages/support";
 import ManageUserPage from "./pages/manage-user";
 import ErrorPage from "./pages/error-page";
+import ManageMoviePage from "./pages/manage-movie";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -80,6 +81,11 @@ function App(props) {
           <PrivateRoute
             path={routePath.MANAGE_USER_PAGE_PATH}
             component={ManageUserPage}
+            roles={[ROLES.ADMIN]}
+          />
+          <PrivateRoute
+            path={routePath.MANAGE_MOVIE_PAGE_PATH}
+            component={ManageMoviePage}
             roles={[ROLES.ADMIN]}
           />
           <Route path="*">

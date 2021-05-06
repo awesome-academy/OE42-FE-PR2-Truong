@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 import OrderSeat from "./order-seat";
 import OrderPayment from "./order-payment";
 import OrderCongratulation from "./order-congratulation";
-import OrderNotFound from "./order-not-found";
+import NotFound from "../../components/not-found";
 
 function OrderTicketPage(props) {
   const [ticketTypes, setTicketTypes] = useState([]);
@@ -159,7 +159,7 @@ function OrderTicketPage(props) {
       <Header />
       <div className="responsive-container">
         {pageState === ORDER_PAGE_STATES.NOT_FOUND ? (
-          <OrderNotFound />
+          <NotFound />
         ) : pageState === ORDER_PAGE_STATES.CONGRATULATION ? (
           <OrderCongratulation />
         ) : (
