@@ -1455,21 +1455,21 @@
       "movieId": 1,
       "cinemaId": 7,
       "roomId": 2,
-      "date": 1619874000000
+      "date": 1622561400000
     },
     {
       "id": 3,
       "movieId": 1,
       "cinemaId": 7,
       "roomId": 2,
-      "date": 1619881200000
+      "date": 1622561400000
     },
     {
       "id": 4,
       "movieId": 1,
       "cinemaId": 8,
       "roomId": 3,
-      "date": 1619881200000
+      "date": 1622561400000
     }
   ],
   "ticketTypes": [

@@ -20,7 +20,7 @@ import moment from "moment";
 function FilmDetail(props) {
   const [selectedCityId, setSelectedCityId] = useState(0);
   const [selectedCinemaId, setSelectedCinemaId] = useState(0);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(Date.now());
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { playingMovies, selectedMovie } = useSelector((state) => state.film);
@@ -42,6 +42,10 @@ function FilmDetail(props) {
     dispatch(getAllSchedules(filmId));
   }, [dispatch, filmId]);
 
+  const handleChangeDate = (e) => {
+    setDate(moment(e.target.value).valueOf());
+  };
+
   const displayCinemas =
     selectedCityId === 0
       ? cinemas
@@ -52,9 +56,7 @@ function FilmDetail(props) {
       const { id, name } = cinema;
       const filterSchedules = schedules.filter(
         (schedule) =>
-          (date.length
-            ? schedule.date >= moment(date, "YYYY:MM:DD").valueOf()
-            : true) && schedule.cinemaId === id
+          moment(schedule.date).isSame(date, "day") && schedule.cinemaId === id
       );
       return { id, name, schedules: filterSchedules };
     })
@@ -125,7 +127,9 @@ function FilmDetail(props) {
             </div>
             <div className="row-info">
               <span className="title">{t("movie_title.published_date")}: </span>
-              <span>{selectedMovie.publishedDate}</span>
+              <span>
+                {moment(selectedMovie.publishedDate).format("DD/MM/YYYY")}
+              </span>
             </div>
           </section>
         </article>
@@ -147,8 +151,8 @@ function FilmDetail(props) {
           </select>
           <input
             type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={moment(date).format("YYYY-MM-DD")}
+            onChange={handleChangeDate}
           />
           <select
             value={selectedCinemaId}

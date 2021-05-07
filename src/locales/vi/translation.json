@@ -137,6 +137,7 @@
         "not_found_page": "Xin lỗi, trang web bạn đang tìm kiếm không tồn tại",
         "not_authorized_page": "Xin lỗi, bạn không được cấp quyền truy cập vào trang web này",
         "login_failed": "Tài khoản hoặc mật khẩu không đúng",
+        "login_blocked": "Tài khoản này đã bị khóa",
         "incorrect_old_password": "Mật khẩu cũ không đúng",
         "not_select_ticket": "Vui lòng chọn vé",
         "not_select_enough_ticket": "Vui lòng chọn đủ số vé đã đặt",

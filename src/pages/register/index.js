@@ -63,6 +63,7 @@ function RegisterPage(props) {
                   token: getRandomString(TOKEN_LENGTH),
                   role: ROLES.USER,
                   createdAt: Date.now(),
+                  isActive: true,
                 })
               );
             }}
