@@ -20,13 +20,20 @@ export function* postLogin(action) {
     const response = yield call(postLoginApi, username, password);
     if (response.statusText === "OK") {
       if (response.data.length !== 0) {
-        const { token, role, ...restProps } = response.data[0];
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", role);
-        yield put(
-          authAction.postLoginSuccess({ user: { ...restProps }, token, role })
-        );
-        toast.success(translation.notification?.login_success);
+        if (response.data[0].isActive) {
+          const { token, role, ...restProps } = response.data[0];
+          localStorage.setItem("token", token);
+          localStorage.setItem("role", role);
+          yield put(
+            authAction.postLoginSuccess({ user: { ...restProps }, token, role })
+          );
+          toast.success(translation.notification?.login_success);
+        } else {
+          yield put(
+            authAction.postLoginFailed(translation.error?.login_blocked)
+          );
+          toast.error(translation.error?.login_blocked);
+        }
       } else {
         yield put(
           authAction.postLoginFailed(translation.notification?.invalid_account)
@@ -52,7 +59,7 @@ export function* getUserInfo(action) {
   try {
     const response = yield call(getUserInfoApi, action.payload);
     if (response.statusText === "OK") {
-      if (response.data.length !== 0) {
+      if (response.data.length && response.data[0].isActive) {
         const { token, role, ...restProps } = response.data[0];
         yield put(
           authAction.getUserInfoSuccess({ user: { ...restProps }, token, role })
@@ -98,7 +105,11 @@ export function* postSignUp(action) {
           localStorage.setItem("token", token);
           localStorage.setItem("role", role);
           yield put(
-            authAction.postSignUpSuccess({ token, role, user: { ...restProps } })
+            authAction.postSignUpSuccess({
+              token,
+              role,
+              user: { ...restProps },
+            })
           );
           toast.success(translation.notification?.register_success);
         } else {

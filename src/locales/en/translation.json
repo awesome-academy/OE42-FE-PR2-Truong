@@ -137,6 +137,7 @@
         "not_found_page": "Sorry, the page you're looking for does not exist",
         "not_authorized_page": "Sorry, you are not authorized to access this page",
         "login_failed": "Username or password is incorrect",
+        "login_blocked": "This account has been blocked",
         "incorrect_old_password": "Old password ís incorrect",
         "not_select_ticket": "Please choose ticket",
         "not_select_enough_ticket": "Please choose enough tickets you ordered",
