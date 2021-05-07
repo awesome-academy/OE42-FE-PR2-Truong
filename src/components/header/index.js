@@ -19,7 +19,7 @@ function Header(props) {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { token, user } = useSelector((state) => state.auth);
+  const { token, role } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setLanguage(localStorage.getItem("i18nextLng"));
@@ -168,7 +168,7 @@ function Header(props) {
           </button>
         )}
         {showBottomMenu &&
-          (user.role === ROLES.ADMIN ? (
+          (role === ROLES.ADMIN ? (
             <ul>
               <li>
                 <Link

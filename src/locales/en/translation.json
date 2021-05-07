@@ -23,7 +23,9 @@
             "payment": "Payment",
             "back_to_homepage": "Go back to homepage",
             "feedback_question": "Send us your feedback?",
-            "add_user": "Add new user"
+            "add_user": "Add new user",
+            "add_movie": "Add new movie",
+            "edit_movie": "Edit movie"
         },
         "button_title": {
             "detail": "Detail",
@@ -38,14 +40,21 @@
             "cancel": "Cancel",
             "send": "Send",
             "add": "Add",
-            "add_user": "Add user"
+            "edit": "Edit",
+            "add_user": "Add user",
+            "add_movie": "Add movie",
+            "back": "Back"
         }
     },
     "select_option": {
         "all_cities": "All cities",
         "all_cinemas": "All cinemas",
         "online_payment": "Online payment",
-        "offline_payment": "Offline payment"
+        "offline_payment": "Offline payment",
+        "all": "All",
+        "cancelled": "Cancelled",
+        "playing": "Playing",
+        "ongoing": "Upcoming"
     },
     "unit": {
         "minute": "minute",
@@ -67,7 +76,9 @@
         "send_feedback_success": "Send feedback successfully",
         "add_user_success": "Add new user successfully",
         "block_user_success": "Blocked user successfully",
-        "activate_user_success": "Activated user successfully"
+        "activate_user_success": "Activated user successfully",
+        "add_movie_success": "Add new movie successfully",
+        "edit_movie_success": "Updated movie successfully"
     },
     "validation_error": {
         "username": {
@@ -98,6 +109,27 @@
             "too_short": "Content length must be at least 20 characters",
             "too_long": "Content length must not exceed 1000 characters",
             "null": "Content must not be null"
+        },
+        "movie": {
+            "name_null": "Movie name must not be null",
+            "image_null": "Movie image must not be null",
+            "trailer_null": "Trailer must not be null",
+            "summary": {
+                "null": "Summary must not be null",
+                "too_short": "Summary length must be at least 50 characters",
+                "too_long": "Content length must not exceed 1000 characters"
+            },
+            "runtime": {
+                "null": "Runtime must not be null",
+                "invalid": "Runtime must be an integer number"
+            },
+            "category_null": "Category must not be null",
+            "nation_null": "Nation must not be null",
+            "producer_null": "Producer must not be null",
+            "director_null": "Director must not be null",
+            "actors_null": "Actors must not be null",
+            "published_date_null": "Published date must not be null",
+            "status_null": "Status must not be null"
         }
     },
     "error": {
@@ -155,12 +187,26 @@
         "not_activated": "Not activated"
     },
     "movie_title": {
+        "movie_name": "Movie name",
+        "trailer_link": "Trailer (link youtube)",
+        "name": "Name",
+        "image": "Image",
+        "trailer": "Trailer",
+        "summary": "Summary",
+        "runtime": "Runtime",
         "category": "Category",
         "nation": "Nation",
         "producer": "Producer",
         "director": "Director",
         "actors": "Actors",
-        "published_date": "Published date"
+        "published_date": "Published date",
+        "rating": "Rating",
+        "status": "Status"
+    },
+    "movie_status": {
+        "cancelled": "Cancelled",
+        "playing": "Playing",
+        "ongoing": "Upcoming"
     },
     "day_of_week": {
         "monday": "Monday",

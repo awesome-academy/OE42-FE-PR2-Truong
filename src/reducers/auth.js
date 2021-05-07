@@ -5,6 +5,7 @@ export const authSlice = createSlice({
   initialState: {
     user: {},
     token: localStorage.getItem("token"),
+    role: localStorage.getItem("role"),
     pending: false,
     error: null,
   },
@@ -14,9 +15,10 @@ export const authSlice = createSlice({
       state.error = null;
     },
     postLoginSuccess: (state, action) => {
-      const { user, token } = action.payload;
+      const { user, token, role } = action.payload;
       state.user = user;
       state.token = token;
+      state.role = role;
       state.pending = false;
       state.error = null;
     },
@@ -29,9 +31,10 @@ export const authSlice = createSlice({
       state.error = null;
     },
     getUserInfoSuccess: (state, action) => {
-      const { user, token } = action.payload;
+      const { user, token, role } = action.payload;
       state.user = user;
       state.token = token;
+      state.role = role;
       state.pending = false;
       state.error = null;
     },
@@ -46,9 +49,10 @@ export const authSlice = createSlice({
       state.error = null;
     },
     postSignUpSuccess: (state, action) => {
-      const { user, token } = action.payload;
+      const { user, token, role } = action.payload;
       state.user = user;
       state.token = token;
+      state.role = role;
       state.pending = false;
       state.error = null;
     },

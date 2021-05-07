@@ -6,7 +6,7 @@ import { LOGIN_PAGE_PATH } from "../constants/routes";
 import ErrorPage from "../pages/error-page";
 
 function PrivateRoute({ component: Component, roles, ...restProps }) {
-  const { token, user } = useSelector((state) => state.auth);
+  const { token, role } = useSelector((state) => state.auth);
   const { t } = useTranslation();
 
   return (
@@ -14,7 +14,7 @@ function PrivateRoute({ component: Component, roles, ...restProps }) {
       {...restProps}
       render={(props) =>
         token ? (
-          roles.includes(user.role) ? (
+          roles.includes(role) ? (
             <Component {...props} />
           ) : (
             <ErrorPage code="403" message={t("error.not_authorized_page")} />

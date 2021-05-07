@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const filmSlice = createSlice({
   name: "film",
   initialState: {
-    searchMovies: [],
+    movies: [],
     playingMovies: [],
     ongoingMovies: [],
     selectedMovie: {},
@@ -74,14 +74,74 @@ export const filmSlice = createSlice({
       state.error = null;
     },
     getSearchMoviesSuccess: (state, action) => {
-      const { searchMovies, currentPage, totalPage } = action.payload;
-      state.searchMovies = searchMovies;
+      const { movies, currentPage, totalPage } = action.payload;
+      state.movies = movies;
       state.currentPage = currentPage;
       state.totalPage = totalPage;
       state.pending = false;
       state.error = null;
     },
     getSearchMoviesFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
+    getFilterMovies: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    getFilterMoviesSuccess: (state, action) => {
+      const { movies, currentPage, totalPage } = action.payload;
+      state.movies = movies;
+      state.currentPage = currentPage;
+      state.totalPage = totalPage;
+      state.pending = false;
+      state.error = null;
+    },
+    getFilterMoviesFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
+    getMovies: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    getMoviesSuccess: (state, action) => {
+      const { movies, currentPage, totalPage } = action.payload;
+      state.movies = movies;
+      state.currentPage = currentPage;
+      state.totalPage = totalPage;
+      state.pending = false;
+      state.error = null;
+    },
+    getMoviesFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
+    postMovie: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    postMovieSuccess: (state) => {
+      state.pending = false;
+      state.error = null;
+    },
+    postMovieFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
+    putMovie: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    putMovieSuccess: (state, action) => {
+      const movie = action.payload;
+      state.movies = state.movies.map((item) =>
+        item.id === movie.id ? movie : item
+      );
+      state.pending = false;
+      state.error = null;
+    },
+    putMovieFailed: (state, action) => {
       state.pending = false;
       state.error = action.payload;
     },
@@ -119,6 +179,18 @@ export const {
   getSearchMovies,
   getSearchMoviesSuccess,
   getSearchMoviesFailed,
+  getFilterMovies,
+  getFilterMoviesSuccess,
+  getFilterMoviesFailed,
+  getMovies,
+  getMoviesSuccess,
+  getMoviesFailed,
+  postMovie,
+  postMovieSuccess,
+  postMovieFailed,
+  putMovie,
+  putMovieSuccess,
+  putMovieFailed,
   putRating,
   putRatingSuccess,
   putRatingFailed,

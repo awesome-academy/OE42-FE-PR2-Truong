@@ -3,7 +3,7 @@ import * as filmAction from "../reducers/film";
 import * as reviewAction from "../reducers/review";
 import * as apiUrl from "../constants/apiUrl";
 import axios from "axios";
-import { LIMIT_SEARCH_MOVIES_PER_PAGE } from "../constants/limitRecord";
+import * as limitRecord from "../constants/limitRecord";
 import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
 import * as routePath from "../constants/routes";
@@ -110,10 +110,10 @@ export function* getSearchMovies(action) {
       const totalRecords = response.headers["x-total-count"];
       yield put(
         filmAction.getSearchMoviesSuccess({
-          searchMovies: response.data,
+          movies: response.data,
           currentPage: page,
           totalPage: limit
-            ? Math.ceil(totalRecords / LIMIT_SEARCH_MOVIES_PER_PAGE)
+            ? Math.ceil(totalRecords / limitRecord.LIMIT_SEARCH_MOVIES_PER_PAGE)
             : 0,
         })
       );
@@ -123,6 +123,116 @@ export function* getSearchMovies(action) {
     }
   } catch {
     yield put(filmAction.getSearchMoviesFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
+const getFilterMoviesApi = (page, limit, status) =>
+  axios.get(
+    `${
+      apiUrl.BASE_URL + apiUrl.API_MOVIE
+    }?_page=${page}&_limit=${limit}&status=${status}`
+  );
+
+export function* getFilterMovies(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { page, limit, status } = action.payload;
+    const response = yield call(getFilterMoviesApi, page, limit, status);
+    if (response.statusText === "OK") {
+      const totalRecords = response.headers["x-total-count"];
+      yield put(
+        filmAction.getFilterMoviesSuccess({
+          movies: response.data,
+          currentPage: page,
+          totalPage: Math.ceil(
+            totalRecords / limitRecord.LIMIT_MOVIES_PER_PAGE
+          ),
+        })
+      );
+    } else {
+      yield put(filmAction.getFilterMoviesFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(filmAction.getFilterMoviesFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
+const getMoviesApi = (page, limit) =>
+  axios.get(
+    `${apiUrl.BASE_URL + apiUrl.API_MOVIE}?_page=${page}&_limit=${limit}`
+  );
+
+export function* getMovies(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { page, limit } = action.payload;
+    const response = yield call(getMoviesApi, page, limit);
+    if (response.statusText === "OK") {
+      const totalRecords = response.headers["x-total-count"];
+      yield put(
+        filmAction.getMoviesSuccess({
+          movies: response.data,
+          currentPage: page,
+          totalPage: Math.ceil(
+            totalRecords / limitRecord.LIMIT_MOVIES_PER_PAGE
+          ),
+        })
+      );
+    } else {
+      yield put(filmAction.getMoviesFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(filmAction.getMoviesFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
+const postMovieApi = (data) =>
+  axios.post(apiUrl.BASE_URL + apiUrl.API_MOVIE, data);
+
+export function* postMovie(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const response = yield call(postMovieApi, action.payload);
+    if (response.statusText === "Created") {
+      yield put(filmAction.postMovieSuccess(response.data));
+      toast.success(translation.notification?.add_movie_success);
+    } else {
+      yield put(filmAction.postMovieFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(filmAction.postMovieFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
+const putMovieApi = (id, data) =>
+  axios.put(apiUrl.BASE_URL + apiUrl.API_MOVIE + "/" + id, data);
+
+export function* putMovie(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { movieId, data } = action.payload;
+    const response = yield call(putMovieApi, movieId, data);
+    console.log(response);
+    if (response.statusText === "OK") {
+      yield put(filmAction.putMovieSuccess(response.data));
+      toast.success(translation.notification?.edit_movie_success);
+    } else {
+      yield put(filmAction.putMovieFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(filmAction.putMovieFailed(errorMessage));
     toast.error(errorMessage);
   }
 }
@@ -161,5 +271,9 @@ export function* watcherFilm() {
   yield takeEvery(filmAction.getPlayingHottestMovies, getPlayingHottestMovies);
   yield takeEvery(filmAction.getDetailMovie, getDetailMovie);
   yield takeEvery(filmAction.getSearchMovies, getSearchMovies);
+  yield takeEvery(filmAction.getFilterMovies, getFilterMovies);
+  yield takeEvery(filmAction.getMovies, getMovies);
+  yield takeEvery(filmAction.postMovie, postMovie);
+  yield takeEvery(filmAction.putMovie, putMovie);
   yield takeEvery(filmAction.putRating, putRating);
 }

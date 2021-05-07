@@ -5,3 +5,9 @@ export const ROLES = {
     USER: "user",
     ADMIN: "admin",
 }
+
+export const MOVIE_STATUSES = {
+    CANCELLED: "CANCELLED",
+    PLAYING: "PLAYING",
+    ONGOING: "ONGOING",
+}

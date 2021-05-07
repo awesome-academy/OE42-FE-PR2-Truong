@@ -1,3 +1,4 @@
+export const YOUTUBE_URL = "https://www.youtube.com/watch?v=";
 export const BASE_URL = "http://localhost:4000";
 
 export const API_BANNER = "/banners";

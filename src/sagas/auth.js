@@ -20,10 +20,11 @@ export function* postLogin(action) {
     const response = yield call(postLoginApi, username, password);
     if (response.statusText === "OK") {
       if (response.data.length !== 0) {
-        const { token, ...restProps } = response.data[0];
+        const { token, role, ...restProps } = response.data[0];
         localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
         yield put(
-          authAction.postLoginSuccess({ user: { ...restProps }, token })
+          authAction.postLoginSuccess({ user: { ...restProps }, token, role })
         );
         toast.success(translation.notification?.login_success);
       } else {
@@ -52,12 +53,13 @@ export function* getUserInfo(action) {
     const response = yield call(getUserInfoApi, action.payload);
     if (response.statusText === "OK") {
       if (response.data.length !== 0) {
-        const { token, ...restProps } = response.data[0];
+        const { token, role, ...restProps } = response.data[0];
         yield put(
-          authAction.getUserInfoSuccess({ user: { ...restProps }, token })
+          authAction.getUserInfoSuccess({ user: { ...restProps }, token, role })
         );
       } else {
         localStorage.removeItem("token");
+        localStorage.removeItem("role");
         yield put(
           authAction.getUserInfoFailed(translation.notification?.invalid_token)
         );
@@ -92,10 +94,11 @@ export function* postSignUp(action) {
       } else {
         const responsePost = yield call(postUserApi, action.payload);
         if (responsePost.statusText === "Created") {
-          const { token, password, ...restProps } = responsePost.data;
+          const { token, role, password, ...restProps } = responsePost.data;
           localStorage.setItem("token", token);
+          localStorage.setItem("role", role);
           yield put(
-            authAction.postSignUpSuccess({ token, user: { ...restProps } })
+            authAction.postSignUpSuccess({ token, role, user: { ...restProps } })
           );
           toast.success(translation.notification?.register_success);
         } else {
@@ -188,6 +191,7 @@ export function* logout() {
   if (localStorage.getItem("token")) {
     yield put(authAction.logoutSuccess());
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     toast.success(translation.notification?.logout_success);
   } else {
     yield put(authAction.logoutFailed(errorMessage));

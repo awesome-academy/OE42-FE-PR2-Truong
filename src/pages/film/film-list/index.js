@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 function FilmList(props) {
   const dispatch = useDispatch();
-  const { searchMovies, currentPage, totalPage } = useSelector(
+  const { movies, currentPage, totalPage } = useSelector(
     (state) => state.film
   );
   const { t } = useTranslation();
@@ -30,9 +30,9 @@ function FilmList(props) {
 
   return (
     <main className="film-list-container">
-      {searchMovies && searchMovies.length > 0 ? (
+      {movies && movies.length > 0 ? (
         <div className="list-film-bound">
-          {searchMovies.map((film) => (
+          {movies.map((film) => (
             <article className="film-item" key={film.id}>
               <img src={film.img} alt={film.name} />
               <div className="action">
@@ -49,7 +49,7 @@ function FilmList(props) {
           <span>{t("error.not_found_film") + " " + keyword}</span>
         </div>
       )}
-      {searchMovies && searchMovies.length > 0 && (
+      {movies && movies.length > 0 && (
         <CustomPagination
           currentPage={currentPage}
           totalPage={totalPage}

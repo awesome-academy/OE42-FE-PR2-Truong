@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.sass";
 
-function OrderNotFound(props) {
+function NotFound(props) {
   return (
-    <section className="not-found-order-container">
+    <section className="not-found-component">
       <img
         src="https://www.galaxycine.vn/website/images/ic-404.png"
         alt="not found"
@@ -12,4 +12,4 @@ function OrderNotFound(props) {
   );
 }
 
-export default OrderNotFound;
+export default NotFound;

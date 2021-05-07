@@ -12,3 +12,4 @@ export const MANAGE_USER_PAGE_PATH = "/manage-user";
 export const MANAGE_MOVIE_PAGE_PATH = "/manage-movie";
 export const MANAGE_REVENUE_PAGE_PATH = "/manage-revenue";
 export const MANAGE_TICKET_PAGE_PATH = "/manage-ticket";
+export const ADD_MOVIE_PAGE_URI = "add";
