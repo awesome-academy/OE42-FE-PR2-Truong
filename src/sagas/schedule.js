@@ -7,22 +7,40 @@ import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
 import { setSelectedSeats } from "../reducers/order";
 import { ORDER_PAGE_STATES } from "../constants/orderTicket";
-import { ORDER_COUNTDOWN_SECONDS } from "../constants/common";
+import { ORDER_COUNTDOWN_SECONDS, SCHEDULE_TYPE_ID } from "../constants/common";
 
-const getAllSchedulesApi = (movieId, currentTime) =>
+const getAllSchedulesByCinemaApi = (cinemaId, currentTime) =>
   axios.get(
     `${
       apiUrl.BASE_URL + apiUrl.API_SCHEDULE
-    }?movieId=${movieId}&date_gte=${currentTime}&_expand=cinema&_sort=date&_order=asc`
+    }?cinemaId=${cinemaId}&date_gte=${currentTime}&_expand=cinema&_sort=date&_order=asc`
+  );
+
+const getAllSchedulesByMovieApi = (cinemaId, movieId, currentTime) =>
+  axios.get(
+    `${apiUrl.BASE_URL + apiUrl.API_SCHEDULE}?movieId=${movieId}${
+      cinemaId ? "&cinemaId=" + cinemaId : ""
+    }&date_gte=${currentTime}&_expand=cinema&_expand=room&_sort=date&_order=asc`
   );
 
 export function* getAllSchedules(action) {
   const translation = getTranslation();
   const errorMessage = translation.notification?.error_occur;
   try {
-    const response = yield call(getAllSchedulesApi, action.payload, Date.now());
+    const { cinemaId, movieId, typeId } = action.payload;
+    const response =
+      typeId === SCHEDULE_TYPE_ID.CINEMA
+        ? yield call(getAllSchedulesByCinemaApi, cinemaId, Date.now())
+        : typeId === SCHEDULE_TYPE_ID.MOVIE
+        ? yield call(getAllSchedulesByMovieApi, cinemaId, movieId, Date.now())
+        : null;
     if (response.statusText === "OK") {
-      yield put(scheduleAction.getAllSchedulesSuccess(response.data));
+      yield put(
+        scheduleAction.getAllSchedulesSuccess({
+          type: typeId,
+          schedules: response.data,
+        })
+      );
     } else {
       yield put(scheduleAction.getAllSchedulesFailed(errorMessage));
       toast.error(errorMessage);
@@ -78,6 +96,31 @@ export function* getDetailSchedule(action) {
   }
 }
 
+const postScheduleApi = (data) =>
+  axios.post(apiUrl.BASE_URL + apiUrl.API_SCHEDULE, data);
+
+export function* postSchedule(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { room, ...restProps } = action.payload;
+    const response = yield call(postScheduleApi, {
+      ...restProps,
+      roomId: room.id,
+    });
+    if (response.statusText === "Created") {
+      yield put(scheduleAction.postScheduleSuccess({ ...response.data, room }));
+      toast.success(translation.notification?.add_schedule_success);
+    } else {
+      yield put(scheduleAction.postScheduleFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(scheduleAction.postScheduleFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
 const putScheduleApi = (scheduleId, data) =>
   axios.put(apiUrl.BASE_URL + apiUrl.API_SCHEDULE + "/" + scheduleId, data);
 
@@ -118,14 +161,8 @@ export function* putSelectingSeats(action) {
             newSelectedSeats.splice(i, 1);
           }
         }
-        const {
-          id,
-          roomSeats,
-          cinema,
-          movie,
-          room,
-          ...restProps
-        } = responseGetSchedule.data;
+        const { id, roomSeats, cinema, movie, room, ...restProps } =
+          responseGetSchedule.data;
         const { isSelectingSeats, ...restSeatTypes } = roomSeats;
         const newScheduleData = {
           ...restProps,
@@ -182,14 +219,8 @@ export function* deleteSelectingSeats(action) {
     const { scheduleId, selectedSeats } = action.payload;
     const responseGetSchedule = yield call(getDetailScheduleApi, scheduleId);
     if (responseGetSchedule.statusText === "OK") {
-      const {
-        id,
-        cinema,
-        movie,
-        room,
-        roomSeats,
-        ...restProps
-      } = responseGetSchedule.data;
+      const { id, cinema, movie, room, roomSeats, ...restProps } =
+        responseGetSchedule.data;
       const { isSelectingSeats, ...restSeats } = roomSeats;
       const newRoomSeats = {
         ...restSeats,
@@ -264,10 +295,41 @@ export function* postSoldSeats(action) {
   }
 }
 
+export function* putSeatByAdmin(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { selectedSchedule, seatData } = action.payload;
+    const { id, roomSeats, room, movie, cinema, ...restProps } =
+      selectedSchedule;
+    const response = yield call(putScheduleApi, id, {
+      ...restProps,
+      roomSeats: seatData,
+    });
+    if (response.statusText === "OK") {
+      yield put(
+        scheduleAction.putSeatByAdminSuccess({
+          ...selectedSchedule,
+          roomSeats: seatData,
+        })
+      );
+      toast.success(translation.notification?.updated_seat_status_success);
+    } else {
+      yield put(scheduleAction.putSeatByAdminFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(scheduleAction.putSeatByAdminFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
 export function* watcherSchedule() {
   yield takeEvery(scheduleAction.getAllSchedules, getAllSchedules);
   yield takeEvery(scheduleAction.getDetailSchedule, getDetailSchedule);
+  yield takeEvery(scheduleAction.postSchedule, postSchedule);
   yield takeEvery(scheduleAction.putSelectingSeats, putSelectingSeats);
   yield takeEvery(scheduleAction.deleteSelectingSeats, deleteSelectingSeats);
   yield takeEvery(scheduleAction.postSoldSeats, postSoldSeats);
+  yield takeEvery(scheduleAction.putSeatByAdmin, putSeatByAdmin);
 }

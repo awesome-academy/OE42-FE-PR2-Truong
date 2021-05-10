@@ -11,11 +11,15 @@ import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import RatingFilm from "../../../components/rating-film";
 import { getAverageRating } from "../../../utils/getAverageRating";
-import { FILM_PAGE_PATH } from "../../../constants/routes";
+import {
+  FILM_PAGE_PATH,
+  ORDER_TICKET_PAGE_PATH,
+} from "../../../constants/routes";
 import { getAllCities, getAllCinemas } from "../../../reducers/cinema";
 import { getAllSchedules } from "../../../reducers/schedule";
 import Schedule from "../../../components/schedule";
 import moment from "moment";
+import { SCHEDULE_TYPE_ID } from "../../../constants/common";
 
 function FilmDetail(props) {
   const [selectedCityId, setSelectedCityId] = useState(0);
@@ -25,7 +29,9 @@ function FilmDetail(props) {
   const dispatch = useDispatch();
   const { playingMovies, selectedMovie } = useSelector((state) => state.film);
   const { cities, cinemas } = useSelector((state) => state.cinema);
-  const { schedules } = useSelector((state) => state.schedule);
+  const { schedulesByMovie: schedules } = useSelector(
+    (state) => state.schedule
+  );
   const { token } = useSelector((state) => state.auth);
   const { filmId } = useParams();
   const { t } = useTranslation();
@@ -39,7 +45,9 @@ function FilmDetail(props) {
     dispatch(getPlayingHottestMovies({ limit: 3 }));
     dispatch(getAllCities());
     dispatch(getAllCinemas());
-    dispatch(getAllSchedules(filmId));
+    dispatch(
+      getAllSchedules({ movieId: filmId, typeId: SCHEDULE_TYPE_ID.MOVIE })
+    );
   }, [dispatch, filmId]);
 
   const handleChangeDate = (e) => {
@@ -170,7 +178,9 @@ function FilmDetail(props) {
         {displaySchedules.length !== 0 &&
           displaySchedules.map((schedule) => {
             const { id, ...restProps } = schedule;
-            return <Schedule key={id} {...restProps} />;
+            return (
+              <Schedule key={id} path={ORDER_TICKET_PAGE_PATH} {...restProps} />
+            );
           })}
       </section>
       <section className="sub-content-container">

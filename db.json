@@ -339,7 +339,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -369,7 +369,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -399,7 +399,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -429,7 +429,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -459,7 +459,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -489,7 +489,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -519,7 +519,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -549,7 +549,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -579,7 +579,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -609,7 +609,7 @@
         "Mạc Văn Khoa",
         "Võ Thành Tâm"
       ],
-      "publishedDate": "30/4/2021",
+      "publishedDate": 1624986000000,
       "ratings": [
         {
           "accountId": 1,
@@ -1344,12 +1344,340 @@
     {
       "id": 2,
       "name": "1B",
-      "cinemaId": 1
+      "cinemaId": 1,
+      "seats": [
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      ]
     },
     {
       "id": 3,
       "name": "2A",
-      "cinemaId": 1
+      "cinemaId": 1,
+      "seats": [
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      ]
     }
   ],
   "schedules": [
@@ -1455,6 +1783,11 @@
       "movieId": 1,
       "cinemaId": 7,
       "roomId": 2,
+      "roomSeats": {
+        "isSelectingSeats": [],
+        "soldSeats": [],
+        "unselectableSeats": []
+      },
       "date": 1622561400000
     },
     {
@@ -1462,14 +1795,226 @@
       "movieId": 1,
       "cinemaId": 7,
       "roomId": 2,
-      "date": 1622561400000
+      "roomSeats": {
+        "isSelectingSeats": [],
+        "soldSeats": [],
+        "unselectableSeats": []
+      },
+      "date": 1622529000000
     },
     {
       "id": 4,
       "movieId": 1,
       "cinemaId": 8,
       "roomId": 3,
+      "roomSeats": {
+        "isSelectingSeats": [],
+        "soldSeats": [],
+        "unselectableSeats": []
+      },
       "date": 1622561400000
+    },
+    {
+      "movieId": 2,
+      "cinemaId": 1,
+      "roomId": 1,
+      "date": 1622561400000,
+      "roomSeats": {
+        "unselectableSeats": [
+          {
+            "seat": "H1"
+          },
+          {
+            "seat": "H2"
+          },
+          {
+            "seat": "H3"
+          },
+          {
+            "seat": "H4"
+          },
+          {
+            "seat": "H5"
+          },
+          {
+            "seat": "H6"
+          },
+          {
+            "seat": "H7"
+          },
+          {
+            "seat": "H8"
+          },
+          {
+            "seat": "H9"
+          },
+          {
+            "seat": "H10"
+          },
+          {
+            "seat": "H11"
+          },
+          {
+            "seat": "H12"
+          },
+          {
+            "seat": "H13"
+          },
+          {
+            "seat": "H14"
+          }
+        ],
+        "soldSeats": [
+          {
+            "seat": "A5",
+            "userId": 1
+          },
+          {
+            "seat": "A6",
+            "userId": 1
+          },
+          {
+            "seat": "A7",
+            "userId": 1
+          },
+          {
+            "seat": "B11",
+            "userId": 1
+          },
+          {
+            "seat": "B12",
+            "userId": 1
+          },
+          {
+            "seat": "A4",
+            "userId": 1
+          }
+        ],
+        "isSelectingSeats": [
+          {
+            "seat": "A3",
+            "userId": 1
+          },
+          {
+            "seat": "B7",
+            "userId": 1
+          },
+          {
+            "seat": "B8",
+            "userId": 1
+          },
+          {
+            "seat": "C5",
+            "userId": 1
+          }
+        ]
+      },
+      "id": 5
+    },
+    {
+      "movieId": 2,
+      "cinemaId": 1,
+      "roomId": 2,
+      "date": 1622615400000,
+      "roomSeats": {
+        "isSelectingSeats": [],
+        "soldSeats": [],
+        "unselectableSeats": []
+      },
+      "id": 6
+    }
+  ],
+  "seats": [
+    {
+      "id": 1,
+      "unselectableSeats": [
+        {
+          "seat": "H1"
+        },
+        {
+          "seat": "H2"
+        },
+        {
+          "seat": "H3"
+        },
+        {
+          "seat": "H4"
+        },
+        {
+          "seat": "H5"
+        },
+        {
+          "seat": "H6"
+        },
+        {
+          "seat": "H7"
+        },
+        {
+          "seat": "H8"
+        },
+        {
+          "seat": "H9"
+        },
+        {
+          "seat": "H10"
+        },
+        {
+          "seat": "H11"
+        },
+        {
+          "seat": "H12"
+        },
+        {
+          "seat": "H13"
+        },
+        {
+          "seat": "H14"
+        }
+      ],
+      "soldSeats": [
+        {
+          "seat": "A5",
+          "userId": 1
+        },
+        {
+          "seat": "A6",
+          "userId": 1
+        },
+        {
+          "seat": "A7",
+          "userId": 1
+        },
+        {
+          "seat": "B11",
+          "userId": 1
+        },
+        {
+          "seat": "B12",
+          "userId": 1
+        },
+        {
+          "seat": "A4",
+          "userId": 1
+        }
+      ],
+      "isSelectingSeats": [
+        {
+          "seat": "A3",
+          "userId": 1
+        },
+        {
+          "seat": "B7",
+          "userId": 1
+        },
+        {
+          "seat": "B8",
+          "userId": 1
+        },
+        {
+          "seat": "C5",
+          "userId": 1
+        }
+      ]
     }
   ],
   "ticketTypes": [

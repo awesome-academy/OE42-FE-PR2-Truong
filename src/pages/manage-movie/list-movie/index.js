@@ -31,7 +31,7 @@ function ListMovie(props) {
 
   const handleAddButton = () => {
     history.push(
-      routePath.MANAGE_MOVIE_PAGE_PATH + "/" + routePath.ADD_MOVIE_PAGE_URI
+      routePath.MANAGE_MOVIE_PAGE_PATH + routePath.ADD_MOVIE_PAGE_URI
     );
   };
 
