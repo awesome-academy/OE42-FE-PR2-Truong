@@ -43,6 +43,19 @@ export const filmSlice = createSlice({
       state.pendingOngoingMovies = false;
       state.errorOngoingMovies = action.payload;
     },
+    getScreeningMovies: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    getScreeningMoviesSuccess: (state, action) => {
+      state.movies = action.payload;
+      state.pending = false;
+      state.error = null;
+    },
+    getScreeningMoviesFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
     getPlayingHottestMovies: (state) => {
       state.pendingPlayingMovies = true;
       state.errorPlayingMovies = null;
@@ -170,6 +183,9 @@ export const {
   getOngoingMovies,
   getOngoingMoviesSuccess,
   getOngoingMoviesFailed,
+  getScreeningMovies,
+  getScreeningMoviesSuccess,
+  getScreeningMoviesFailed,
   getPlayingHottestMovies,
   getPlayingHottestMoviesSuccess,
   getPlayingHottestMoviesFailed,

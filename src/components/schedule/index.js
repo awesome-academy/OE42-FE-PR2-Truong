@@ -2,20 +2,19 @@ import React from "react";
 import "./style.sass";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { ORDER_TICKET_PAGE_PATH } from "../../constants/routes";
 
-function Schedule({ name, schedules }) {
+function Schedule({ name, path, schedules }) {
   return (
     <article className="schedule-component-container">
       <section className="cinema-name">{name}</section>
       <section className="schedule-bound">
         {schedules.length &&
           schedules.map((schedule) => {
-            const { id } = schedule;
+            const { id, date, room } = schedule;
             return (
-              <Link key={id} to={ORDER_TICKET_PAGE_PATH + "/" + id}>
+              <Link key={id} to={path + "/" + id}>
                 <time className="schedule-item">
-                  {moment(schedule.date).format("HH:mm")}
+                  {moment(date).format("HH:mm") + (room ? " - " + room.name : "")}
                 </time>
               </Link>
             );

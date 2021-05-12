@@ -24,7 +24,8 @@ export function* getAllCities() {
   }
 }
 
-const getAllCinemasApi = () => axios.get(apiUrl.BASE_URL + apiUrl.API_CINEMA);
+const getAllCinemasApi = () =>
+  axios.get(apiUrl.BASE_URL + apiUrl.API_CINEMA + "?_expand=city");
 
 export function* getAllCinemas() {
   const translation = getTranslation();
@@ -43,7 +44,28 @@ export function* getAllCinemas() {
   }
 }
 
+const getDetailCinemaApi = (id) =>
+  axios.get(`${apiUrl.BASE_URL + apiUrl.API_CINEMA}/${id}?_expand=city&_embed=rooms`);
+
+export function* getDetailCinema(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const response = yield call(getDetailCinemaApi, action.payload);
+    if (response.statusText === "OK") {
+      yield put(cinemaAction.getDetailCinemaSuccess(response.data));
+    } else {
+      yield put(cinemaAction.getDetailCinemaFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(cinemaAction.getDetailCinemaFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
 export function* watcherCinema() {
   yield takeEvery(cinemaAction.getAllCities, getAllCities);
   yield takeEvery(cinemaAction.getAllCinemas, getAllCinemas);
+  yield takeEvery(cinemaAction.getDetailCinema, getDetailCinema);
 }

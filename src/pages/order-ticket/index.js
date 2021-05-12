@@ -9,13 +9,13 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailSchedule, putSelectingSeats } from "../../reducers/schedule";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import {
   getServices,
   getTicketTypes,
   resetOrder,
   setPageState,
 } from "../../reducers/order";
+import { getScheduleDate } from "../../utils/getScheduleDate";
 import PendingSpinner from "../../components/pending-spinner";
 import { toast } from "react-toastify";
 import OrderSeat from "./order-seat";
@@ -70,34 +70,6 @@ function OrderTicketPage(props) {
       }))
     );
   }, [initServices]);
-
-  const getDayString = (num) => {
-    switch (num) {
-      case 1:
-        return t("day_of_week.monday");
-      case 2:
-        return t("day_of_week.tuesday");
-      case 3:
-        return t("day_of_week.wednesday");
-      case 4:
-        return t("day_of_week.thursday");
-      case 5:
-        return t("day_of_week.friday");
-      case 6:
-        return t("day_of_week.saturday");
-      case 7:
-        return t("day_of_week.sunday");
-      default:
-        return;
-    }
-  };
-
-  const getScheduleDate = (duration) => {
-    const date = moment(duration);
-    return `${date.format("HH:mm")} | ${getDayString(
-      date.day()
-    )}, ${date.format("DD/MM/YYYY")}`;
-  };
 
   const getTotal = (arr) =>
     arr.reduce((total, item) => total + item.quantity * item.unitPrice, 0);

@@ -7,9 +7,12 @@ import * as limitRecord from "../constants/limitRecord";
 import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
 import * as routePath from "../constants/routes";
+import { MOVIE_STATUSES } from "../constants/common";
 
 const getPlayingMoviesApi = () =>
-  axios.get(apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=PLAYING");
+  axios.get(
+    apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=" + MOVIE_STATUSES.PLAYING
+  );
 
 export function* getPlayingMovies() {
   const translation = getTranslation();
@@ -29,7 +32,9 @@ export function* getPlayingMovies() {
 }
 
 const getOngoingMoviesApi = () =>
-  axios.get(apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=ONGOING");
+  axios.get(
+    apiUrl.BASE_URL + apiUrl.API_MOVIE + "?status=" + MOVIE_STATUSES.ONGOING
+  );
 
 export function* getOngoingMovies() {
   const translation = getTranslation();
@@ -44,6 +49,30 @@ export function* getOngoingMovies() {
     }
   } catch {
     yield put(filmAction.getOngoingMoviesFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
+const getScreeningMoviesApi = () =>
+  axios.get(
+    `${apiUrl.BASE_URL + apiUrl.API_MOVIE}?status=${
+      MOVIE_STATUSES.PLAYING
+    }&status=${MOVIE_STATUSES.ONGOING}`
+  );
+
+export function* getScreeningMovies() {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const response = yield call(getScreeningMoviesApi);
+    if (response.statusText === "OK") {
+      yield put(filmAction.getScreeningMoviesSuccess(response.data));
+    } else {
+      yield put(filmAction.getScreeningMoviesFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(filmAction.getScreeningMoviesFailed(errorMessage));
     toast.error(errorMessage);
   }
 }
@@ -268,6 +297,7 @@ export function* putRating(action) {
 export function* watcherFilm() {
   yield takeEvery(filmAction.getPlayingMovies, getPlayingMovies);
   yield takeEvery(filmAction.getOngoingMovies, getOngoingMovies);
+  yield takeEvery(filmAction.getScreeningMovies, getScreeningMovies);
   yield takeEvery(filmAction.getPlayingHottestMovies, getPlayingHottestMovies);
   yield takeEvery(filmAction.getDetailMovie, getDetailMovie);
   yield takeEvery(filmAction.getSearchMovies, getSearchMovies);

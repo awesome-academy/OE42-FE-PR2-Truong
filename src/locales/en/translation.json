@@ -43,6 +43,7 @@
             "edit": "Edit",
             "add_user": "Add user",
             "add_movie": "Add movie",
+            "add_schedule": "Add schedule",
             "back": "Back"
         }
     },
@@ -78,7 +79,9 @@
         "block_user_success": "Blocked user successfully",
         "activate_user_success": "Activated user successfully",
         "add_movie_success": "Add new movie successfully",
-        "edit_movie_success": "Updated movie successfully"
+        "edit_movie_success": "Updated movie successfully",
+        "add_schedule_success": "Added new schedule successfully",
+        "updated_seat_status_success": "Updated seat status successfully"
     },
     "validation_error": {
         "username": {
@@ -130,7 +133,11 @@
             "actors_null": "Actors must not be null",
             "published_date_null": "Published date must not be null",
             "status_null": "Status must not be null"
-        }
+        },
+        "room_null": "Room must not be null",
+        "time_null": "Time must not be null",
+        "date_null": "Date must not be null",
+        "date_not_future": "Date must be in the future"
     },
     "error": {
         "not_found_film": "Not found any film with name is ",
@@ -185,7 +192,18 @@
         "created_at": "Created at",
         "action": "Action",
         "activated": "Activated",
-        "not_activated": "Not activated"
+        "not_activated": "Not activated",
+        "cinema_name": "Cinema name",
+        "city": "City",
+        "detail": "Detail",
+        "show_detail": "Show detail",
+        "search": "Search",
+        "movie_name": "Movie name",
+        "published_date": "Published date",
+        "schedule_quantity": "Schedule quantity",
+        "choose_room": "Choose room:",
+        "choose_date": "Choose date:",
+        "choose_hour": "Choose hour:"
     },
     "movie_title": {
         "movie_name": "Movie name",
