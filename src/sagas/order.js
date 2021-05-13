@@ -14,6 +14,7 @@ import axios from "axios";
 import { getTranslation } from "../utils/getTranslation";
 import { toast } from "react-toastify";
 import { ORDER_PAGE_STATES } from "../constants/orderTicket";
+import * as limitRecord from "../constants/limitRecord";
 
 const getTicketTypesApi = () =>
   axios.get(apiUrl.BASE_URL + apiUrl.API_TICKET_TYPE);
@@ -66,9 +67,7 @@ export function* runCountdownSync(action) {
   } finally {
     if (yield cancelled()) {
       const { scheduleId, selectedSeats } = action.payload;
-      yield put(
-        schedule.deleteSelectingSeats({ scheduleId, selectedSeats })
-      );
+      yield put(schedule.deleteSelectingSeats({ scheduleId, selectedSeats }));
     }
   }
 }
@@ -109,6 +108,85 @@ function* postOrder(action) {
   }
 }
 
+const getAllOrdersApi = (page, limit, fromDate, toDate, cinemaId, movieIds) => {
+  let req = `${
+    apiUrl.BASE_URL + apiUrl.API_ORDER
+  }?_page=${page}&_limit=${limit}&_expand=movie&_expand=cinema`;
+  if (fromDate) {
+    req += "&date_gte=" + fromDate;
+  }
+  if (toDate) {
+    req += "&date_lte=" + toDate;
+  }
+  if (cinemaId) {
+    req += "&cinemaId=" + cinemaId;
+  }
+  if (movieIds && movieIds.length) {
+    req += movieIds.map((movieId) => "&movieId=" + movieId).join("");
+  }
+  return axios.get(req);
+};
+
+const getSearchMoviesApi = (keyword) =>
+  axios.get(`${apiUrl.BASE_URL + apiUrl.API_MOVIE}?q=${keyword}&attr=name`);
+
+function* getAllOrders(action) {
+  const translation = getTranslation();
+  const errorMessage = translation.notification?.error_occur;
+  try {
+    const { page, limit, fromDate, toDate, cinemaId, movieName } =
+      action.payload;
+    let movieIds;
+    if (movieName) {
+      const responseGetMovies = yield call(getSearchMoviesApi, movieName);
+      if (responseGetMovies.statusText === "OK") {
+        if (responseGetMovies.data.length) {
+          movieIds = responseGetMovies.data.map((movie) => movie.id);
+        } else {
+          yield put(
+            orderAction.getAllOrdersSuccess({
+              orders: [],
+              currentPage: 1,
+              totalPage: 0,
+            })
+          );
+          return;
+        }
+      } else {
+        yield put(orderAction.getAllOrdersFailed(errorMessage));
+        toast.error(errorMessage);
+      }
+    }
+    const response = yield call(
+      getAllOrdersApi,
+      page,
+      limit,
+      fromDate,
+      toDate,
+      cinemaId,
+      movieIds
+    );
+    if (response.statusText === "OK") {
+      const totalRecords = response.headers["x-total-count"];
+      yield put(
+        orderAction.getAllOrdersSuccess({
+          orders: response.data,
+          currentPage: page,
+          totalPage: limit
+            ? Math.ceil(totalRecords / limitRecord.LIMIT_ORDERS_PER_PAGE)
+            : 0,
+        })
+      );
+    } else {
+      yield put(orderAction.getAllOrdersFailed(errorMessage));
+      toast.error(errorMessage);
+    }
+  } catch {
+    yield put(orderAction.getAllOrdersFailed(errorMessage));
+    toast.error(errorMessage);
+  }
+}
+
 function* cancelOrder() {
   yield cancel(countdownTask);
 }
@@ -118,5 +196,6 @@ export function* watcherOrder() {
   yield takeEvery(orderAction.getServices, getServices);
   yield takeEvery(orderAction.runCountdown, runCountdown);
   yield takeEvery(orderAction.postOrder, postOrder);
+  yield takeEvery(orderAction.getAllOrders, getAllOrders);
   yield takeEvery(orderAction.cancelOrder, cancelOrder);
 }

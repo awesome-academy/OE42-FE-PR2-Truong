@@ -5,6 +5,9 @@ import { ORDER_PAGE_STATES } from "../constants/orderTicket";
 export const orderSlice = createSlice({
   name: "order",
   initialState: {
+    orders: [],
+    currentPage: 1,
+    totalPage: 0,
     pageState: null,
     ticketTypes: [],
     pendingTicketTypes: false,
@@ -67,6 +70,22 @@ export const orderSlice = createSlice({
       state.pending = false;
       state.error = action.payload;
     },
+    getAllOrders: (state) => {
+      state.pending = true;
+      state.error = null;
+    },
+    getAllOrdersSuccess: (state, action) => {
+      const { orders, currentPage, totalPage } = action.payload;
+      state.orders = orders;
+      state.currentPage = currentPage;
+      state.totalPage = totalPage;
+      state.pending = false;
+      state.error = null;
+    },
+    getAllOrdersFailed: (state, action) => {
+      state.pending = false;
+      state.error = action.payload;
+    },
     resetOrder: (state) => {
       state.countdown = ORDER_COUNTDOWN_SECONDS;
       state.orderedData = {};
@@ -96,6 +115,9 @@ export const {
   postOrder,
   postOrderSuccess,
   postOrderFailed,
+  getAllOrders,
+  getAllOrdersSuccess,
+  getAllOrdersFailed,
   setSelectedSeats,
   resetOrder,
   setPageState,
