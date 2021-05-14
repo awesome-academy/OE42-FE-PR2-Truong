@@ -211,7 +211,10 @@
         "date": "Date",
         "ticket": "Tickets",
         "services": "Services",
-        "revenue": "Revenue"
+        "revenue": "Revenue",
+        "tickets_and_services": "Tickets & Services",
+        "choose_seats": "Choose seats",
+        "payment": "Payment"
     },
     "movie_title": {
         "movie_name": "Movie name",
