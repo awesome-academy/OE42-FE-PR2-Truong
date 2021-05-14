@@ -22,6 +22,8 @@ import OrderSeat from "./order-seat";
 import OrderPayment from "./order-payment";
 import OrderCongratulation from "./order-congratulation";
 import NotFound from "../../components/not-found";
+import ProgressBar from "../../components/progress-bar";
+import { ORDER_PROGRESSES } from "../../constants/common";
 
 function OrderTicketPage(props) {
   const [ticketTypes, setTicketTypes] = useState([]);
@@ -135,81 +137,94 @@ function OrderTicketPage(props) {
         ) : pageState === ORDER_PAGE_STATES.CONGRATULATION ? (
           <OrderCongratulation />
         ) : (
-          <main>
-            <section className="order-container">
-              {pageState === ORDER_PAGE_STATES.ORDER_TICKET_AND_FOODS ? (
-                <OrderTypeAndFood
-                  ticketTypes={ticketTypes}
-                  setTicketTypes={setTicketTypes}
-                  services={services}
-                  setServices={setServices}
-                  totalPrice={getTotal(ticketTypes.concat(services))}
-                />
-              ) : pageState === ORDER_PAGE_STATES.ORDER_SEAT ? (
-                <OrderSeat
-                  seats={selectedSchedule.room?.seats}
-                  seatStatus={selectedSchedule.roomSeats}
-                  ticketQuantity={getTicketQuantity(ticketTypes)}
-                />
-              ) : pageState === ORDER_PAGE_STATES.ORDER_PAYMENT ? (
-                <OrderPayment ticketTypes={ticketTypes} services={services} />
-              ) : null}
-            </section>
-            <section className="info-container">
-              <div className="info-bound">
-                <img
-                  src="https://www.galaxycine.vn/media/2021/3/15/1350x900_1615774854778.jpg"
-                  alt=""
-                />
-                <div className="movie-title">
-                  {selectedSchedule.movie?.name}
+          <>
+            <ProgressBar
+              progresses={Object.keys(ORDER_PROGRESSES).map((key) =>
+                t("label." + ORDER_PROGRESSES[key].name)
+              )}
+              activeIndex={
+                Object.keys(ORDER_PROGRESSES).findIndex(
+                  (key) => ORDER_PROGRESSES[key].pageState === pageState
+                )
+              }
+            />
+            <main>
+              <section className="order-container">
+                {pageState === ORDER_PAGE_STATES.ORDER_TICKET_AND_FOODS ? (
+                  <OrderTypeAndFood
+                    ticketTypes={ticketTypes}
+                    setTicketTypes={setTicketTypes}
+                    services={services}
+                    setServices={setServices}
+                    totalPrice={getTotal(ticketTypes.concat(services))}
+                  />
+                ) : pageState === ORDER_PAGE_STATES.ORDER_SEAT ? (
+                  <OrderSeat
+                    seats={selectedSchedule.room?.seats}
+                    seatStatus={selectedSchedule.roomSeats}
+                    ticketQuantity={getTicketQuantity(ticketTypes)}
+                  />
+                ) : pageState === ORDER_PAGE_STATES.ORDER_PAYMENT ? (
+                  <OrderPayment ticketTypes={ticketTypes} services={services} />
+                ) : null}
+              </section>
+              <section className="info-container">
+                <div className="info-bound">
+                  <img
+                    src="https://www.galaxycine.vn/media/2021/3/15/1350x900_1615774854778.jpg"
+                    alt=""
+                  />
+                  <div className="movie-title">
+                    {selectedSchedule.movie?.name}
+                  </div>
+                  <div className="info-item-container">
+                    <div className="info-item">
+                      <b>{t("label.cinema")}:&nbsp;</b>
+                      <span>
+                        {selectedSchedule.cinema?.name +
+                          ` | ${t("label.cinema")} ` +
+                          selectedSchedule.room?.name}
+                      </span>
+                    </div>
+                    <div className="info-item">
+                      <b>{t("label.screening")}:&nbsp;</b>
+                      <span>{getScheduleDate(selectedSchedule.date)}</span>
+                    </div>
+                    <div className="info-item">
+                      <b>{t("label.combo")}:&nbsp;</b>
+                      <span>{getCombo(services)}</span>
+                    </div>
+                    <div className="info-item">
+                      <b>{t("label.seat")}:&nbsp;</b>
+                      <span>{selectedSeats.join(", ")}</span>
+                    </div>
+                    <div className="info-total-item">
+                      {t("label.total")}:&nbsp;
+                      <span>
+                        {getTotal(ticketTypes.concat(services)) !== 0 &&
+                          formatCurrency(
+                            getTotal(ticketTypes.concat(services))
+                          ) + " VNĐ"}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="action">
+                    {pageState !== ORDER_PAGE_STATES.ORDER_TICKET_AND_FOODS &&
+                      pageState !== ORDER_PAGE_STATES.ORDER_PAYMENT && (
+                        <button onClick={() => handlePrevPage(pageState)}>
+                          <i className="fa fa-long-arrow-left"></i>&nbsp;
+                          {t("common.button_title.prev")}
+                        </button>
+                      )}
+                    <button onClick={() => handleNextPage(pageState)}>
+                      {t("common.button_title.next")}&nbsp;
+                      <i className="fa fa-long-arrow-right"></i>
+                    </button>
+                  </div>
                 </div>
-                <div className="info-item-container">
-                  <div className="info-item">
-                    <b>{t("label.cinema")}:&nbsp;</b>
-                    <span>
-                      {selectedSchedule.cinema?.name +
-                        ` | ${t("label.cinema")} ` +
-                        selectedSchedule.room?.name}
-                    </span>
-                  </div>
-                  <div className="info-item">
-                    <b>{t("label.screening")}:&nbsp;</b>
-                    <span>{getScheduleDate(selectedSchedule.date)}</span>
-                  </div>
-                  <div className="info-item">
-                    <b>{t("label.combo")}:&nbsp;</b>
-                    <span>{getCombo(services)}</span>
-                  </div>
-                  <div className="info-item">
-                    <b>{t("label.seat")}:&nbsp;</b>
-                    <span>{selectedSeats.join(", ")}</span>
-                  </div>
-                  <div className="info-total-item">
-                    {t("label.total")}:&nbsp;
-                    <span>
-                      {getTotal(ticketTypes.concat(services)) !== 0 &&
-                        formatCurrency(getTotal(ticketTypes.concat(services))) +
-                          " VNĐ"}
-                    </span>
-                  </div>
-                </div>
-                <div className="action">
-                  {pageState !== ORDER_PAGE_STATES.ORDER_TICKET_AND_FOODS &&
-                    pageState !== ORDER_PAGE_STATES.ORDER_PAYMENT && (
-                      <button onClick={() => handlePrevPage(pageState)}>
-                        <i className="fa fa-long-arrow-left"></i>&nbsp;
-                        {t("common.button_title.prev")}
-                      </button>
-                    )}
-                  <button onClick={() => handleNextPage(pageState)}>
-                    {t("common.button_title.next")}&nbsp;
-                    <i className="fa fa-long-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-            </section>
-          </main>
+              </section>
+            </main>
+          </>
         )}
         <Footer />
       </div>

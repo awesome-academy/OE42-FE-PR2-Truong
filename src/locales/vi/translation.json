@@ -211,7 +211,10 @@
         "date": "Ngày",
         "ticket": "Vé",
         "services": "Dịch vụ",
-        "revenue": "Doanh thu"
+        "revenue": "Doanh thu",
+        "tickets_and_services": "Vé & Dịch vụ",
+        "choose_seats": "Chọn ghế",
+        "payment": "Thanh toán"
     },
     "movie_title": {
         "movie_name": "Tên phim",
