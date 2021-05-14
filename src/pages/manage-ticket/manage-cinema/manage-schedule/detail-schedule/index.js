@@ -127,7 +127,7 @@ function DetailSchedule(props) {
                 key={rowIndex + "-" + colIndex}
                 className={seatClassName}
                 title={col !== 0 ? index : ""}
-                seat={seatLabel}W
+                seat={seatLabel}
                 event={handleChangeSeatStatus}
               />
             );

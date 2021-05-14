@@ -3,6 +3,7 @@ import "./style.sass";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { FILM_PAGE_PATH } from "../../constants/routes";
+import PropTypes from "prop-types";
 
 function AdditionalFilmList({ movies }) {
   const { t } = useTranslation();
@@ -29,5 +30,9 @@ function AdditionalFilmList({ movies }) {
     </>
   );
 }
+
+AdditionalFilmList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
 
 export default AdditionalFilmList;

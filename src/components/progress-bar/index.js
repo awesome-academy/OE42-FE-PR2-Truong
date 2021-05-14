@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import "./style.sass";
 import { colorOrangeDark } from "../../assets/style/_export.module.scss";
+import PropTypes from "prop-types";
 
 function ProgressBar({ progresses, activeIndex }) {
   const getBarStyle = (index) => {
@@ -48,5 +49,10 @@ function ProgressBar({ progresses, activeIndex }) {
     </div>
   );
 }
+
+ProgressBar.propTypes = {
+  progresses: PropTypes.array.isRequired,
+  activeIndex: PropTypes.number.isRequired,
+};
 
 export default ProgressBar;
