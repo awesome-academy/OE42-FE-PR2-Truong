@@ -59,7 +59,8 @@
     },
     "unit": {
         "minute": "phút",
-        "minutes": "phút"
+        "minutes": "phút",
+        "vietnam_currency": "VNĐ"
     },
     "notification": {
         "update_personal_info_success": "Cập nhật thông tin cá nhân thành công",
@@ -161,7 +162,8 @@
         "email": "Email",
         "phone": "Số điện thoại",
         "content": "Nội dung",
-        "address": "Địa chỉ"
+        "address": "Địa chỉ",
+        "movie_name": "Nhập tên phim"
     },
     "label": {
         "username": "Username",
@@ -186,7 +188,7 @@
         "selectable_seat": "Có thể chọn",
         "unselectable_seat": "Không thể chọn",
         "screen": "Màn hình",
-        "payment_type": "Chọn phương thức thanh toán",
+        "payment_type": "Phương thức thanh toán",
         "number_order": "Stt",
         "status": "Trạng thái",
         "created_at": "Tạo lúc",
@@ -203,7 +205,13 @@
         "schedule_quantity": "Số suất chiếu",
         "choose_room": "Chọn phòng:",
         "choose_date": "Chọn ngày:",
-        "choose_hour": "Chọn giờ:"
+        "choose_hour": "Chọn giờ:",
+        "from_date": "Từ ngày",
+        "to_date": "Đến ngày",
+        "date": "Ngày",
+        "ticket": "Vé",
+        "services": "Dịch vụ",
+        "revenue": "Doanh thu"
     },
     "movie_title": {
         "movie_name": "Tên phim",

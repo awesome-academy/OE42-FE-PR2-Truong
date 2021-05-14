@@ -1888,6 +1888,14 @@
           {
             "seat": "A4",
             "userId": 1
+          },
+          {
+            "seat": "B5",
+            "userId": 2
+          },
+          {
+            "seat": "B6",
+            "userId": 2
           }
         ],
         "isSelectingSeats": [
@@ -1922,99 +1930,6 @@
         "unselectableSeats": []
       },
       "id": 6
-    }
-  ],
-  "seats": [
-    {
-      "id": 1,
-      "unselectableSeats": [
-        {
-          "seat": "H1"
-        },
-        {
-          "seat": "H2"
-        },
-        {
-          "seat": "H3"
-        },
-        {
-          "seat": "H4"
-        },
-        {
-          "seat": "H5"
-        },
-        {
-          "seat": "H6"
-        },
-        {
-          "seat": "H7"
-        },
-        {
-          "seat": "H8"
-        },
-        {
-          "seat": "H9"
-        },
-        {
-          "seat": "H10"
-        },
-        {
-          "seat": "H11"
-        },
-        {
-          "seat": "H12"
-        },
-        {
-          "seat": "H13"
-        },
-        {
-          "seat": "H14"
-        }
-      ],
-      "soldSeats": [
-        {
-          "seat": "A5",
-          "userId": 1
-        },
-        {
-          "seat": "A6",
-          "userId": 1
-        },
-        {
-          "seat": "A7",
-          "userId": 1
-        },
-        {
-          "seat": "B11",
-          "userId": 1
-        },
-        {
-          "seat": "B12",
-          "userId": 1
-        },
-        {
-          "seat": "A4",
-          "userId": 1
-        }
-      ],
-      "isSelectingSeats": [
-        {
-          "seat": "A3",
-          "userId": 1
-        },
-        {
-          "seat": "B7",
-          "userId": 1
-        },
-        {
-          "seat": "B8",
-          "userId": 1
-        },
-        {
-          "seat": "C5",
-          "userId": 1
-        }
-      ]
     }
   ],
   "ticketTypes": [
@@ -2057,6 +1972,85 @@
       "unitPrice": 150000
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "accountId": 2,
+      "userInfo": {
+        "paymentType": "offline",
+        "fullName": "Lê Anh Tuấn",
+        "address": "ha tinh"
+      },
+      "seats": [
+        {
+          "seat": "B5",
+          "userId": 2
+        },
+        {
+          "seat": "B6",
+          "userId": 2
+        }
+      ],
+      "ticketTypes": [
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "services": [
+        {
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "roomId": 1,
+      "cinemaId": 1,
+      "movieId": 2,
+      "date": 1622561400000,
+      "id": 1
+    },
+    {
+      "accountId": 1,
+      "userInfo": {
+        "paymentType": "online",
+        "fullName": "Nguyễn Đình Trường",
+        "address": "Đà Nẵng"
+      },
+      "seats": [
+        {
+          "seat": "B5",
+          "userId": 2
+        },
+        {
+          "seat": "B6",
+          "userId": 2
+        }
+      ],
+      "ticketTypes": [
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "services": [
+        {
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "roomId": 1,
+      "cinemaId": 1,
+      "movieId": 1,
+      "date": 1622561400000,
+      "id": 2
+    }
+  ],
   "feedbacks": []
 }

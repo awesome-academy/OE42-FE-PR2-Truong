@@ -59,7 +59,8 @@
     },
     "unit": {
         "minute": "minute",
-        "minutes": "minutes"
+        "minutes": "minutes",
+        "vietnam_currency": "VND"
     },
     "notification": {
         "update_personal_info_success": "Updated personal info successfully",
@@ -161,7 +162,8 @@
         "email": "Email",
         "phone": "Phone",
         "content": "Content",
-        "address": "Address"
+        "address": "Address",
+        "movie_name": "Input movie name"
     },
     "label": {
         "username": "Username",
@@ -186,7 +188,7 @@
         "selectable_seat": "Selectable seats",
         "unselectable_seat": "Unselectable seats",
         "screen": "Screen",
-        "payment_type": "Select payment type",
+        "payment_type": "Payment type",
         "number_order": "No",
         "status": "Status",
         "created_at": "Created at",
@@ -203,7 +205,13 @@
         "schedule_quantity": "Schedule quantity",
         "choose_room": "Choose room:",
         "choose_date": "Choose date:",
-        "choose_hour": "Choose hour:"
+        "choose_hour": "Choose hour:",
+        "from_date": "From date",
+        "to_date": "To date",
+        "date": "Date",
+        "ticket": "Tickets",
+        "services": "Services",
+        "revenue": "Revenue"
     },
     "movie_title": {
         "movie_name": "Movie name",
