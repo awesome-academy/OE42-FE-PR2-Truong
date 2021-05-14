@@ -3,6 +3,7 @@ import "./style.sass";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { putRating } from "../../reducers/film";
+import PropTypes from "prop-types";
 
 function RatingFilm({ movie, from }) {
   const TOTAL_STAR = 10;
@@ -74,5 +75,10 @@ function RatingFilm({ movie, from }) {
     </div>
   );
 }
+
+RatingFilm.propTypes = {
+  movie: PropTypes.object.isRequired,
+  from: PropTypes.string.isRequired,
+};
 
 export default RatingFilm;

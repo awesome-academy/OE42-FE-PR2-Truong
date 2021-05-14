@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "./style.sass";
 import { Button, Overlay, Popover } from "react-bootstrap";
 import * as seatClassNames from "../../constants/seatClassNames";
+import PropTypes from "prop-types";
 
 function SeatConfirm({ className, title, seat, event }) {
   const [show, setShow] = useState(false);
@@ -55,5 +56,12 @@ function SeatConfirm({ className, title, seat, event }) {
     </div>
   );
 }
+
+SeatConfirm.propTypes = {
+  className: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  seat: PropTypes.string.isRequired,
+  event: PropTypes.func.isRequired,
+};
 
 export default SeatConfirm;

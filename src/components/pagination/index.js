@@ -3,11 +3,17 @@ import "./style.sass";
 import { Pagination } from "react-bootstrap";
 import { getPaginations } from "../../utils/getPaginations";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
-function CustomPagination(props) {
+function CustomPagination({
+  currentPage,
+  totalPage,
+  limitRecords,
+  action,
+  ...restProps
+}) {
   const dispatch = useDispatch();
-  const { currentPage, totalPage, limitRecords, action, ...restProps } = props;
-
+  
   const handleClickPrev = () => {
     dispatch(
       action({ page: currentPage - 1, limit: limitRecords, ...restProps })
@@ -53,5 +59,12 @@ function CustomPagination(props) {
     </section>
   );
 }
+
+CustomPagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  limitRecords: PropTypes.number.isRequired,
+  action: PropTypes.func.isRequired,
+};
 
 export default CustomPagination;

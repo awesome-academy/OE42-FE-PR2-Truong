@@ -48,7 +48,7 @@ function OrderTypeAndFood({
                       })
                     )
                   }
-                  titleComponent={type.name}
+                  titleComponent={<span>{type.name}</span>}
                   unitPrice={type.unitPrice}
                 />
               ))}

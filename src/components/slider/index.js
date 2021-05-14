@@ -3,6 +3,7 @@ import "./style.sass";
 import { Link } from "react-router-dom";
 import * as routePath from "../../constants/routes";
 import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
 
 function Slider({ data }) {
   const [pageQuantity, setPageQuantity] = useState(0);
@@ -84,5 +85,9 @@ function Slider({ data }) {
     </section>
   );
 }
+
+Slider.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default Slider;

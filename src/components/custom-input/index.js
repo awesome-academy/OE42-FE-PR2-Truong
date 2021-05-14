@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./style.sass";
+import PropTypes from "prop-types";
 
 function CustomInput({ innerRef, field, type, icon, ...props }) {
   const [showPass, setShowPass] = useState(false);
-  
+
   return (
     <div className="custom-input-container">
       {type === "password" && (
@@ -23,5 +24,12 @@ function CustomInput({ innerRef, field, type, icon, ...props }) {
     </div>
   );
 }
+
+CustomInput.propTypes = {
+  innerRef: PropTypes.object,
+  field: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+};
 
 export default CustomInput;

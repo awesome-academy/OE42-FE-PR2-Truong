@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./style.sass";
 import { Button, Overlay, Popover } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 function PopConfirm({ title, variant, event }) {
   const [show, setShow] = useState(false);
@@ -44,5 +45,11 @@ function PopConfirm({ title, variant, event }) {
     </div>
   );
 }
+
+PopConfirm.propTypes = {
+  title: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
+  event: PropTypes.func.isRequired,
+};
 
 export default PopConfirm;
